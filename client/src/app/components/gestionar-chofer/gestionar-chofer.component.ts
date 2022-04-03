@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chofer } from 'src/app/models/chofer.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { ChoferService } from '../../service/estados.service';
+import { ChoferService } from '../../service/chofer.service';
 
 @Component({
   selector: 'app-gestionar-chofer',
