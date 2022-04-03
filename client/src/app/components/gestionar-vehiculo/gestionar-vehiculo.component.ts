@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Vehiculo } from 'src/app/models/vehiculo.model';
+import { VehiculoService } from 'src/app/service/vehiculo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestionar-vehiculo',
@@ -14,10 +16,10 @@ import { Vehiculo } from 'src/app/models/vehiculo.model';
 export class GestionarVehiculoComponent implements OnInit {
 
   //Lista de chofer
-  listaEstados : Vehiculo[] = [];
+  listaVehiculos : Vehiculo[] = [];
 
   //Configuración de la tabla
-  displayedColumns: string[] = ['identificador', 'Anno', 'Modelo','Placa','Color', 'Puntuacion', 'Estado','UbicacionActual'];
+  displayedColumns: string[] = ['identificador', 'Anno', 'Modelo','Placa','Color', 'Puntuacion', 'Estado','UbicacionActual','acciones'];
   dataSource!:  MatTableDataSource<any>;
 
 
@@ -25,10 +27,10 @@ export class GestionarVehiculoComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor( private vehiculoService : EstadoService, private _snackbar: MatSnackBar, private router: Router ) { }
+  constructor( private vehiculoService : VehiculoService, private _snackbar: MatSnackBar, private router: Router ) { }
 
   ngOnInit(): void {
-    this.consultarEstado();
+    this.consultarVehiculo();
   }
 
   ngAfterViewInit() {
@@ -45,11 +47,11 @@ export class GestionarVehiculoComponent implements OnInit {
 
 
   consultarVehiculo():void{
-    this.estadoService.getAll()
+    this.vehiculoService.getAll()
       .subscribe({
          next: (data) => {
-           this.listaEstados = data;
-           this.dataSource = new MatTableDataSource(this.listaEstados);
+           this.listaVehiculos = data;
+           this.dataSource = new MatTableDataSource(this.listaVehiculos);
            this.dataSource.paginator = this.paginator;
            this.dataSource.sort = this.sort;
            console.log(data);
@@ -61,8 +63,8 @@ export class GestionarVehiculoComponent implements OnInit {
 
   eliminarVehiculo(element:any){
 
-    swal.fire({
-      title: `¿Desea eliminar la factura #${element.nombre} la a nombre de ${element.descripcion}?`,
+    Swal.fire({
+      title: `¿Desea eliminar el vehiculo placa #${element.placa} y el chofer con numero de identificacion ${element.identificador}?`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -73,13 +75,13 @@ export class GestionarVehiculoComponent implements OnInit {
       if (result.isConfirmed) {
 
         console.log(element._id);
-        this.estadoService.delete(element._id)
+        this.vehiculoService.delete(element._id)
           .subscribe({
              next: (data) => {
-               this.consultarEstado();
+               this.consultarVehiculo();
                console.log(data);
               
-               this._snackbar.open('La factura eliminada correctamente','',{
+               this._snackbar.open('El vehiculo se elimino correctamente','',{
                   duration: 5000,
                   horizontalPosition: 'center',
                   verticalPosition: 'bottom'
@@ -97,8 +99,8 @@ export class GestionarVehiculoComponent implements OnInit {
 
   modificarVehiculo(element:any){
 
-    swal.fire({
-      title: `¿Desea eliminar la factura #${element.nombre} la a nombre de ${element.descripcion}?`,
+    Swal.fire({
+      title: `¿Desea eliminar el vehiculo placa #${element.placa} y el chofer con numero de identificacion ${element.identificador}?`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
