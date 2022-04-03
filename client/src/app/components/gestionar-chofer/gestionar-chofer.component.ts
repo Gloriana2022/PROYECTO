@@ -60,7 +60,7 @@ export class GestionarChoferComponent implements OnInit {
     
   }
 
-  eliminarEstado(element:any){
+  eliminarChofer(element:any){
 
     swal.fire({
       title: `¿Desea eliminar la factura #${element.nombre} la a nombre de ${element.descripcion}?`,
