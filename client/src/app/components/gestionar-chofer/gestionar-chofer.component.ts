@@ -19,7 +19,7 @@ export class GestionarChoferComponent implements OnInit {
   listaChoferes : Chofer[] = [];
 
   //Configuración de la tabla
-  displayedColumns: string[] = ['nombre', 'descripcion', 'acciones'];
+  displayedColumns: string[] = ['cedula', 'choferActual', 'acciones'];
   dataSource!:  MatTableDataSource<any>;
 
 
@@ -64,7 +64,7 @@ export class GestionarChoferComponent implements OnInit {
   eliminarChofer(element:any){
 
     Swal.fire({
-      title: `¿Desea eliminar la factura #${element.nombre} la a nombre de ${element.descripcion}?`,
+      title: `¿Desea eliminar el chofer #${element.cedula} la a nombre de ${element.choferActual}?`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -81,7 +81,7 @@ export class GestionarChoferComponent implements OnInit {
                this.consultarChofer();
                console.log(data);
               
-               this._snackbar.open('La factura eliminada correctamente','',{
+               this._snackbar.open('El chofer eliminado correctamente','',{
                   duration: 5000,
                   horizontalPosition: 'center',
                   verticalPosition: 'bottom'
