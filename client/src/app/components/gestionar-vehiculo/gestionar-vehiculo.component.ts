@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Vehiculo } from 'src/app/models/vehiculo.model';
-
 
 @Component({
   selector: 'app-gestionar-vehiculo',
@@ -21,7 +25,7 @@ export class GestionarVehiculoComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor( private estadoService : EstadoService, private _snackbar: MatSnackBar, private router: Router ) { }
+  constructor( private vehiculoService : EstadoService, private _snackbar: MatSnackBar, private router: Router ) { }
 
   ngOnInit(): void {
     this.consultarEstado();
