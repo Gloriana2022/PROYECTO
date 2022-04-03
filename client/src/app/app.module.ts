@@ -11,6 +11,7 @@ import { GestionarVehiculoComponent } from './components/gestionar-vehiculo/gest
 import { GestionarChoferComponent } from './components/gestionar-chofer/gestionar-chofer.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
