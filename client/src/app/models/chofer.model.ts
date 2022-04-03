@@ -1,10 +1,6 @@
 export class Chofer {
     _id?:any;
-    cedula?:{
-        type: Number,
-        unique: true,
-        required: true
-    };
+    cedula?:Number;
     tipoLicencia?: String;
     fechaNacimiento?: String;
     fechaVencimientoLicencia?: String;

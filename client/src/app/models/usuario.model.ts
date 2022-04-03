@@ -1,10 +1,6 @@
 export class Usuario {
     _id?:any;
-    numUsuario?:{
-        type: Number,
-        unique: true,
-        required: true
-    };
+    numUsuario?:Number;
     nomUsuario?: String;
     apellidos?: String;
     correo?: String;
