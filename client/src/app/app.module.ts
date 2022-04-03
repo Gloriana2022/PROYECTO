@@ -10,6 +10,7 @@ import { SolicitarVehiculoComponent } from './components/solicitar-vehiculo/soli
 import { GestionarVehiculoComponent } from './components/gestionar-vehiculo/gestionar-vehiculo.component';
 import { GestionarChoferComponent } from './components/gestionar-chofer/gestionar-chofer.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReportesComponent } from './components/reportes/reportes.component';
     SolicitarVehiculoComponent,
     GestionarVehiculoComponent,
     GestionarChoferComponent,
-    ReportesComponent
+    ReportesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule
