@@ -1,4 +1,5 @@
 export class Chofer {
+    _id?:any;
     cedula?:{
         type: Number,
         unique: true,

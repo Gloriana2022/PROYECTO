@@ -1,4 +1,5 @@
 export class Usuario {
+    _id?:any;
     numUsuario?:{
         type: Number,
         unique: true,
