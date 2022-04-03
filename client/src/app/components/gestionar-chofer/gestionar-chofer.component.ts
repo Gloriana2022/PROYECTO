@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ChoferService } from '../../service/chofer.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestionar-chofer',
@@ -62,7 +63,7 @@ export class GestionarChoferComponent implements OnInit {
 
   eliminarChofer(element:any){
 
-    swal.fire({
+    Swal.fire({
       title: `¿Desea eliminar la factura #${element.nombre} la a nombre de ${element.descripcion}?`,
       icon: 'question',
       showCancelButton: true,
@@ -98,8 +99,8 @@ export class GestionarChoferComponent implements OnInit {
 
   modificarChofer(element:any){
 
-    swal.fire({
-      title: `¿Desea eliminar la factura #${element.nombre} la a nombre de ${element.descripcion}?`,
+    Swal.fire({
+      title: `¿Desea eliminar el chofer #${element.cedula} con el nombre de ${element.choferActual}?`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -109,7 +110,7 @@ export class GestionarChoferComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(element._id);
-        this.router.navigateByUrl(`dashboard/detalleEstado/${element._id}`);
+        this.router.navigateByUrl(`dashboard/detalleChofer/${element._id}`);
       } 
 
     });
