@@ -11,6 +11,7 @@ import { RegistreseComponent } from './components/registrese/registrese.componen
 import { SharedModule } from './components/shared/shared.module';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
+import { CrearUsuarioComponent } from './components/usuario/crear-usuario/crear-usuario.component';
 
 
 
@@ -23,6 +24,7 @@ import { FacturasComponent } from './components/facturas/facturas.component';
     RegistreseComponent,
     PerfilComponent,
     FacturasComponent,
+    CrearUsuarioComponent,
   ],
   imports: [
     BrowserModule,
