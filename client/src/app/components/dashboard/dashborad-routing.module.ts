@@ -1,14 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from '../inicio/inicio.component';
-import { ReportesComponent } from '../reportes/reportes.component';
+
 import { DashboardComponent } from './dashboard.component';
+import { InicioComponent } from '../inicio/inicio.component';
+import { UsuarioComponent } from '../usuario/usuario.component';
+import { SolicitarVehiculoComponent } from '../solicitar-vehiculo/solicitar-vehiculo.component';
+import { VehiculoComponent } from '../vehiculo/vehiculo.component';
+import { ChoferComponent } from '../chofer/chofer.component';
+import { ReportesComponent } from '../reportes/reportes.component';
 
 const routes: Routes = [
   { 
     path: '', component: DashboardComponent, children: [
-    { path: 'inicio', component: InicioComponent },
-    { path: 'reportes', component: ReportesComponent },
+    { path: '', component: InicioComponent },
+    { path: 'usuario', component: UsuarioComponent },
+    { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent },
+    { path: 'vehiculo', component: VehiculoComponent },
+    { path: 'chofer', component: ChoferComponent },
+    { path: 'reportes', component: ReportesComponent }
   ]
 }  
 

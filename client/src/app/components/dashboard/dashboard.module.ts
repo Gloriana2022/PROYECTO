@@ -10,13 +10,23 @@ import { NavbarComponent } from "../navbar/NavbarComponent";
 import { ReportesComponent } from '../reportes/reportes.component';
 
 
+import { VehiculoComponent } from '../vehiculo/vehiculo.component';
+import { UsuarioComponent } from '../usuario/usuario.component';
+import { ChoferComponent } from '../chofer/chofer.component';
+import { SolicitarVehiculoComponent } from '../solicitar-vehiculo/solicitar-vehiculo.component';
+
+
 
 @NgModule({
   declarations: [
     DashboardComponent,
     InicioComponent,
     NavbarComponent,
-    ReportesComponent
+    ReportesComponent,
+    VehiculoComponent,
+    UsuarioComponent,
+    ChoferComponent,
+    SolicitarVehiculoComponent
   ],
   imports: [
     CommonModule,
