@@ -13,7 +13,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 export class CrearUsuarioComponent implements OnInit {
 
   idUsuario: number = 0;
-  textPantalla: string = 'Crear factura';
+  textPantalla: string = 'Crear Usuario';
   isInsertar: boolean = true;
   form:FormGroup;
   usuario = new Usuario;
@@ -142,7 +142,7 @@ export class CrearUsuarioComponent implements OnInit {
         next: (res: any) => {
           this.form.reset;
           console.log(res);
-          this.router.navigateByUrl('/dashboard/facturas');
+          this.router.navigateByUrl('/dashboard/usuario');
 
           this._snackbar.open('La factura fue modificada con exito, por favor verificar', '',{
             duration: 5000,
@@ -182,7 +182,7 @@ export class CrearUsuarioComponent implements OnInit {
         next: (res: any) => {
           this.form.reset;
           console.log(res);
-          this.router.navigateByUrl('/dashboard/facturas');
+          this.router.navigateByUrl('/dashboard/usuario');
 
           this._snackbar.open('El usuario fue agregado con exito, por favor verificar', '',{
             duration: 5000,

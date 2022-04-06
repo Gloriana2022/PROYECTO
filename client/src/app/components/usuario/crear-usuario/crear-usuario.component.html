@@ -8,31 +8,81 @@
     <mat-card style="margin-top: 10px;" style="text-align: left;">
         <form [formGroup]="form">
             <mat-form-field >
-                <mat-label>Número de factura</mat-label>
-                <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="numFactura">
+                <mat-label>Cedula Identidad</mat-label>
+                <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="numUsuario">
             </mat-form-field>
             <br>
             <mat-form-field >
-                <mat-label>Nombre del cliente</mat-label>
-                <input matInput #input maxlength="100" placeholder="Nombre completo" autocomplete="off" formControlName="nomCliente" >
+                <mat-label>Nombre</mat-label>
+                <input matInput #input maxlength="100" placeholder="Nombre completo" autocomplete="off" formControlName="nomUsuario" >
             </mat-form-field>
             <br>
             <mat-form-field >
-                <mat-label>Dirección del cliente</mat-label>
-                <input matInput #input maxlength="200" placeholder="Dirección exacta" autocomplete="off"  formControlName="dirCliente" >
+                <mat-label>Apellido</mat-label>
+                <input matInput #input maxlength="200" placeholder="Apellido" autocomplete="off"  formControlName="apellidos" >
             </mat-form-field>
             <br>
             <mat-form-field  >
-                <mat-label>Teléfono del cliente</mat-label>
-                <input matInput #input maxlength="8"  placeholder="99999999" autocomplete="off" formControlName="telCliente">
+                <mat-label>Correo</mat-label>
+                <input matInput #input maxlength="200"  placeholder="Corre" autocomplete="off" formControlName="correo">
             </mat-form-field>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Fec Nacimiento</mat-label>
+                <input matInput #input maxlength="200" placeholder="Fecha Nacimiento" autocomplete="off"  formControlName="fechaNacimiento" >
+            </mat-form-field>
+            <br>
+
+
+            <br>
+            <mat-form-field >
+                <mat-label>direccion</mat-label>
+                <input matInput #input maxlength="200" placeholder="Dirección exacta" autocomplete="off"  formControlName="direccion" >
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Telefono</mat-label>
+                <input matInput #input maxlength="200" placeholder="Telefono" autocomplete="off"  formControlName="telefono" >
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Tipo Usuario</mat-label>
+                <input matInput #input maxlength="200" placeholder="Tipo Usuario" autocomplete="off"  formControlName="tipoUsuario" >
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Ubicacion</mat-label>
+                <input matInput #input maxlength="200" placeholder="Ubicacion" autocomplete="off"  formControlName="ubicacion" >
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Rol</mat-label>
+                <input matInput #input maxlength="200" placeholder="Rol" autocomplete="off"  formControlName="rol" >
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Contraseña</mat-label>
+                <input matInput #input maxlength="200" placeholder="Contraseña" autocomplete="off"  formControlName="contrasenna" >
+            </mat-form-field>
+            <br>
 
           
                
             <br><br>
-            <button mat-raised-button color="warn" routerLink="/dashboard/facturas" routerLinkActive="router-link-active" >Regresar</button>
+            <button mat-raised-button color="warn" routerLink="/dashboard/usuario" routerLinkActive="router-link-active" >Regresar</button>
             <span *ngIf="isInsertar">
-                <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="saveUsuario()">Guardar factura</button>
+                <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="saveUsuario()">Guardar Usuario</button>
             </span>
             <span *ngIf="!isInsertar">
                 <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="modificarUsuario()">Modificar factura</button>
