@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Chofer } from '../models/chofer.model';
 import { environment } from 'src/environments/environment';
 
-const baseUrl = `${environment.apiUrl}/choferes`;
+const baseUrl = `${environment.apiUrl}/chofer`;
 
 @Injectable({
   providedIn: 'root'

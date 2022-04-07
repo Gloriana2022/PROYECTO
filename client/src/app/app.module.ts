@@ -12,6 +12,10 @@ import { SharedModule } from './components/shared/shared.module';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
 import { CrearUsuarioComponent } from './components/usuario/crear-usuario/crear-usuario.component';
+import { CrearChoferComponent } from './components/chofer/crear-chofer/crear-chofer.component';
+import { CrearVehiculoComponent } from './components/vehiculo/crear-vehiculo/crear-vehiculo.component';
+import { CrearSolicitudVehiculoComponent } from './components/solicitar-vehiculo/crear-solicitud-vehiculo/crear-solicitud-vehiculo.component';
+import { CrearFacturasComponent } from './components/facturas/crear-facturas/crear-facturas.component';
 
 
 
@@ -25,6 +29,10 @@ import { CrearUsuarioComponent } from './components/usuario/crear-usuario/crear-
     PerfilComponent,
     FacturasComponent,
     CrearUsuarioComponent,
+    CrearChoferComponent,
+    CrearVehiculoComponent,
+    CrearSolicitudVehiculoComponent,
+    CrearFacturasComponent,
   ],
   imports: [
     BrowserModule,
