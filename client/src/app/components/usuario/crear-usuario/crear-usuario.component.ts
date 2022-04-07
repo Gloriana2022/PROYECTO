@@ -56,7 +56,7 @@ export class CrearUsuarioComponent implements OnInit {
 
     this.activeRouter.params.subscribe((params: Params) => {      
       console.log(params);
-      this.idUsuario = params['id'];
+      this.idUsuario = params['numUsuario'];
 
       //***********************************************/
       //se consultan los datos de la factura 

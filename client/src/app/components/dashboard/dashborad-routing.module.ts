@@ -19,6 +19,7 @@ const routes: Routes = [
     { path: '', component: InicioComponent },
     { path: 'usuario', component: UsuarioComponent },
     { path: 'crearUsuario', component: CrearUsuarioComponent },
+    { path: 'crearUsuario/:id', component: CrearUsuarioComponent },
     { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent },
     { path: 'vehiculo', component: VehiculoComponent },
     { path: 'chofer', component: ChoferComponent },

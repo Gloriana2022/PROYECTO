@@ -103,7 +103,7 @@ export class UsuarioComponent implements OnInit {
   modificarUsuario(element:any){
 
     swal.fire({
-      title: `¿Desea eliminar al usuario con cedula #${element.numUsuario} con el nombre de ${element.nomUsuario}?`,
+      title: `¿Desea eliminar al usuario con cedula # ${element.numUsuario} con el nombre de ${element.nomUsuario}?`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -113,7 +113,7 @@ export class UsuarioComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(element._id);
-        this.router.navigateByUrl(`dashboard/detalleFactura/${element._id}`);
+        this.router.navigateByUrl(`dashboard/crearUsuario/${element.numUsuario}`);
       } 
 
     });
