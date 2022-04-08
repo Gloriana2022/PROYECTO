@@ -22,7 +22,7 @@ export class VehiculoComponent implements OnInit {
   listaVehiculos : Vehiculo[] = [];
 
     //Configuración de la tabla
-    displayedColumns: string[] = ['identificador', 'anno', 'Modelo', 'placa', 'color','puntuacion','estado','ubicacionActual','chofer', 'acciones'];
+    displayedColumns: string[] = ['identificador', 'chofer', 'Modelo', 'placa','anno', 'color','puntuacion','ubicacionActual','estado', 'acciones'];
     dataSource!:  MatTableDataSource<any>;
 
     //Para la paginación

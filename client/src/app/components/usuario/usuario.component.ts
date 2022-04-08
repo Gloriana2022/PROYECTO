@@ -22,7 +22,7 @@ export class UsuarioComponent implements OnInit {
   listaUsuarios : Usuario[] = [];
 
     //Configuración de la tabla
-    displayedColumns: string[] = ['numUsuario', 'nomUsuario', 'apellidos', 'correo', 'fechaNacimiento','direccion','telefono','tipoUsuario','ubicacion','rol','contrasenna', 'acciones'];
+    displayedColumns: string[] = ['numUsuario', 'nomUsuario', 'apellidos', 'correo', 'fechaNacimiento','direccion','telefono','tipoUsuario','ubicacion','rol','contrasenna','estado', 'acciones'];
     dataSource!:  MatTableDataSource<any>;
 
     //Para la paginación

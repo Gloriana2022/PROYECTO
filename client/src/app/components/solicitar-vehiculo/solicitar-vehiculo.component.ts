@@ -19,7 +19,7 @@ export class SolicitarVehiculoComponent implements OnInit {
 listaSolicitudVehiculos : SolicitudVehiculo[] = [];
 
 //Configuración de la tabla
-displayedColumns: string[] = ['identificador', 'tiempoLlegada','tiempoDuracion','costoServicio','pagoLinea','puntoSalida','puntoLlegada','comentario','usuario','vehiculo','chofer', 'acciones'];
+displayedColumns: string[] = ['identificador','usuario', 'chofer','vehiculo', 'tiempoLlegada','tiempoDuracion','costoServicio','pagoLinea','puntoSalida','puntoLlegada','comentario', 'acciones'];
 dataSource!:  MatTableDataSource<any>;
 
 

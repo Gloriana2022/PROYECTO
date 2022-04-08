@@ -11,4 +11,5 @@ export class Usuario {
     ubicacion?: String;
     rol?: String;
     contrasenna?: String;
+    estado?: any;
 }

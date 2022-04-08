@@ -13,6 +13,11 @@
             </mat-form-field>
             <br>
             <mat-form-field >
+                <mat-label>Chofer Actual</mat-label>
+                <input matInput #input maxlength="200" placeholder="Chofer Actual" autocomplete="off"  formControlName="choferActual" >
+            </mat-form-field>
+            <br>
+            <mat-form-field >
                 <mat-label>Tipo Licencia</mat-label>
                 <input matInput #input maxlength="100" placeholder="Tipo Licencia" autocomplete="off" formControlName="tipoLicencia" >
             </mat-form-field>
@@ -26,13 +31,17 @@
                 <mat-label>Fec Vencimiento Licencia</mat-label>
                 <input matInput #input maxlength="200"  placeholder="Fec Vencimiento Licencia" autocomplete="off" formControlName="fechaVencimientoLicencia">
             </mat-form-field>
-
             <br>
-            <mat-form-field >
-                <mat-label>Chofer Actual</mat-label>
-                <input matInput #input maxlength="200" placeholder="Chofer Actual" autocomplete="off"  formControlName="choferActual" >
-            </mat-form-field>
-            <br>
+            
+            <mat-form-field>
+                <mat-select formControlName="chofer"  placeholder="Seleccione un estado">
+                        <mat-option *ngFor="let estado of listaEstado" 
+                        [value]="estado._id"> 
+                        {{estado.nombre}}
+                  </mat-option>
+               </mat-select>
+             </mat-form-field>
+              <br>
 
             <br><br>
             <button mat-raised-button color="warn" routerLink="/dashboard/chofer" routerLinkActive="router-link-active" >Regresar</button>

@@ -27,6 +27,11 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm Cedula</th>
         <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
       </ng-container>
+
+      <ng-container matColumnDef="choferActual">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Chofer Actual</th>
+        <td mat-cell *matCellDef="let element"> {{element.choferActual}} </td>
+      </ng-container>
     
       <!-- Name Column -->
       <ng-container matColumnDef="tipoLicencia">
@@ -46,9 +51,9 @@
         <td mat-cell *matCellDef="let element"> {{element.fechaVencimientoLicencia}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="choferActual">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Chofer Actual</th>
-        <td mat-cell *matCellDef="let element"> {{element.choferActual}} </td>
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado</th>
+        <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
       </ng-container>
 
       <ng-container matColumnDef="acciones">

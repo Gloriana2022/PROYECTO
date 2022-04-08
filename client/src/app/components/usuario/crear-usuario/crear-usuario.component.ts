@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Estado } from 'src/app/models/estado.model';
 import { Usuario } from 'src/app/models/usuario.model';
+import { EstadoService } from 'src/app/service/estado.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
@@ -19,8 +21,9 @@ export class CrearUsuarioComponent implements OnInit {
   usuario = new Usuario;
 
   listaUsuario : Usuario[] = [];
+  listaEstado : Estado[] = [];
 
-  constructor(private usuarioService: UsuarioService,
+  constructor(private usuarioService: UsuarioService, private estadoService: EstadoService,
     private fb: FormBuilder, private router: Router, 
     private _snackbar: MatSnackBar,
     private activeRouter: ActivatedRoute) { 
@@ -36,7 +39,8 @@ export class CrearUsuarioComponent implements OnInit {
       tipoUsuario: ['', Validators.required],
       ubicacion: ['', Validators.required],
       rol: ['', Validators.required],
-      contrasenna: ['', Validators.required]
+      contrasenna: ['', Validators.required],
+      estado: ['', Validators.required]
     });
   }
 
@@ -48,6 +52,7 @@ export class CrearUsuarioComponent implements OnInit {
     //***************************************************************/
 
     this.cargarUsuario();
+    this.cargarEstado();
 
     //***************************************************************/
     //Cuando se inicializa el compomente de consulta si el ID
@@ -81,7 +86,8 @@ export class CrearUsuarioComponent implements OnInit {
                                   tipoUsuario: this.usuario.tipoUsuario,
                                   ubicacion: this.usuario.ubicacion,
                                   rol: this.usuario.rol,
-                                  contrasenna: this.usuario.contrasenna});
+                                  contrasenna: this.usuario.contrasenna,
+                                  estado: this.usuario.estado._id});
 
               console.log(this.usuario);
 
@@ -115,6 +121,17 @@ export class CrearUsuarioComponent implements OnInit {
         error: (e:any) => console.error(e)
       });
   }
+
+  cargarEstado(): void{
+    this.estadoService.getAll()
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.listaEstado = res;
+        },
+        error: (e:any) => console.error(e)
+      });
+  }
   
 
   //***************************************************************/
@@ -132,7 +149,8 @@ export class CrearUsuarioComponent implements OnInit {
       tipoUsuario: this.form.value.tipoUsuario,
       ubicacion: this.form.value.ubicacion,
       rol: this.form.value.rol,
-      contrasenna: this.form.value.contrasenna
+      contrasenna: this.form.value.contrasenna,
+      estado: this.usuario.estado._id
     };
 
     console.log(data);

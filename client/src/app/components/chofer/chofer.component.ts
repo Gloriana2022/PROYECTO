@@ -20,7 +20,7 @@ export class ChoferComponent implements OnInit {
 
   
   //Configuración de la tabla
-  displayedColumns: string[] = ['cedula', 'tipoLicencia','fechaNacimiento','fechaVencimientoLicencia','choferActual', 'acciones'];
+  displayedColumns: string[] = ['cedula','choferActual', 'tipoLicencia','fechaNacimiento','fechaVencimientoLicencia','estado','acciones'];
   dataSource!:  MatTableDataSource<any>;
 
   //Para la paginación

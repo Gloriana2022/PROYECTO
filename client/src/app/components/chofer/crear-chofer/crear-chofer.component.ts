@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Chofer } from 'src/app/models/chofer.model';
+import { Estado } from 'src/app/models/estado.model';
 import { ChoferService } from 'src/app/service/chofer.service';
+import { EstadoService } from 'src/app/service/estado.service';
 
 @Component({
   selector: 'app-crear-chofer',
@@ -18,9 +20,9 @@ export class CrearChoferComponent implements OnInit {
   form:FormGroup;
   chofer = new Chofer;
 
-  //listaEstados : Estado[] = [];
+  listaEstado : Estado[] = [];
 
-  constructor(private choferService: ChoferService,
+  constructor(private choferService: ChoferService, private estadoService: EstadoService,
     private fb: FormBuilder, private router: Router, 
     private _snackbar: MatSnackBar,
     private activeRouter: ActivatedRoute) { 
@@ -31,6 +33,7 @@ export class CrearChoferComponent implements OnInit {
       fechaNacimiento: ['', Validators.required],
       fechaVencimientoLicencia: ['', Validators.required],
       choferActual: ['', Validators.required],
+      estado: ['', Validators.required],
     });
   }
 
@@ -41,7 +44,7 @@ export class CrearChoferComponent implements OnInit {
     //Se carga la información de los estados
     //***************************************************************/
 
-    //this.cargarEstados();
+    this.cargarEstados();
 
     //***************************************************************/
     //Cuando se inicializa el compomente de consulta si el ID
@@ -93,16 +96,16 @@ export class CrearChoferComponent implements OnInit {
   //***************************************************************/
   //Se carga la información de los estados para el select
   //***************************************************************/
-  /*cargarEstados(): void{
-    this.usuarioService.getAll()
+  cargarEstados(): void{
+    this.estadoService.getAll()
       .subscribe({
         next: (res: any) => {
           console.log(res);
-          this.listaEstados = res;
+          this.listaEstado = res;
         },
         error: (e:any) => console.error(e)
       });
-  }*/
+  }
   
 
   //***************************************************************/

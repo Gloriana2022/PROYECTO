@@ -11,6 +11,18 @@
               <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="identificador">
           </mat-form-field>
           <br>
+
+          <mat-form-field>
+            <mat-select formControlName="chofer"  placeholder="Seleccione un Chofer">
+                    <mat-option *ngFor="let chofer of listaChoferes" 
+                    [value]="chofer._id"> 
+                    {{chofer.choferActual}}
+              </mat-option>
+           </mat-select>
+         </mat-form-field>
+          <br>
+
+        
           <mat-form-field >
             <mat-label>Año</mat-label>
             <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="anno">
@@ -44,22 +56,14 @@
           </mat-form-field>
           <br>
           
-
-        <mat-form-field>
-            <mat-select formControlName="chofer"  placeholder="Seleccione un Chofer">
-                    <mat-option *ngFor="let chofer of listaChoferes" 
-                    [value]="chofer._id"> 
-                    {{chofer.choferActual}}
+          <mat-form-field>
+            <mat-select formControlName="chofer"  placeholder="Seleccione un estado">
+                    <mat-option *ngFor="let estado of listaEstado" 
+                    [value]="estado._id"> 
+                    {{estado.nombre}}
               </mat-option>
            </mat-select>
          </mat-form-field>
-          <br>
-
-          <br>
-          <mat-form-field >
-              <mat-label>Estado</mat-label>
-              <input matInput #input maxlength="200" placeholder="Bueno, Malo o Regular" autocomplete="off"  formControlName="estado" >
-          </mat-form-field>
           <br>
           
           <br><br>

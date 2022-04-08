@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Chofer } from 'src/app/models/chofer.model';
+import { Estado } from 'src/app/models/estado.model';
 import { Vehiculo } from 'src/app/models/vehiculo.model';
 import { ChoferService } from 'src/app/service/chofer.service';
+import { EstadoService } from 'src/app/service/estado.service';
 import { VehiculoService } from 'src/app/service/vehiculo.service';
 
 @Component({
@@ -22,8 +24,9 @@ export class CrearVehiculoComponent implements OnInit {
 
   listaVehiculos : Vehiculo[] = [];
   listaChoferes : Chofer[] = [];
+  listaEstado : Estado[] = [];
 
-  constructor(private vehiculoService: VehiculoService,
+  constructor(private vehiculoService: VehiculoService,private estadoService: EstadoService,
     private choferService: ChoferService,
     private fb: FormBuilder, private router: Router, 
     private _snackbar: MatSnackBar,
@@ -49,6 +52,7 @@ export class CrearVehiculoComponent implements OnInit {
 
     this.cargarVehiculo();
     this.cargarChofer();
+    this.cargarEstado();
 
     //***************************************************************/
     //Cuando se inicializa el compomente de consulta si el ID
@@ -78,7 +82,7 @@ export class CrearVehiculoComponent implements OnInit {
                                   placa: this.vehiculo.placa,
                                   color: this.vehiculo.color,
                                   puntuacion: this.vehiculo.puntuacion,
-                                  estado: this.vehiculo.estado,
+                                  estado: this.vehiculo.estado._id,
                                   ubicacionActual: this.vehiculo.ubicacionActual,
                                   chofer: this.vehiculo.chofer._id});
 
@@ -121,6 +125,17 @@ export class CrearVehiculoComponent implements OnInit {
         next: (res: any) => {
           console.log(res);
           this.listaChoferes = res;
+        },
+        error: (e:any) => console.error(e)
+      });
+  }
+
+  cargarEstado(): void{
+    this.estadoService.getAll()
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.listaEstado = res;
         },
         error: (e:any) => console.error(e)
       });
