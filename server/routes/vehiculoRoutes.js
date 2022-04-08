@@ -10,7 +10,7 @@ router.get("/", vehiculoController.get);
 router.get("/:id", vehiculoController.getById);
 router.post("/", vehiculoController.create);
 router.delete("/:id", vehiculoController.delete);
-router.put("/id:", vehiculoController.update);
+router.put("/:id", vehiculoController.update);
 //
 //
 module.exports = router;

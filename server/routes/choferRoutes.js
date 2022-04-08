@@ -10,7 +10,7 @@ router.get("/", choferController.get);
 router.get("/:id", choferController.getById);
 router.post("/", choferController.create);
 router.delete("/:id", choferController.delete);
-router.put("/id:", choferController.update);
+router.put("/:id", choferController.update);
 //
 //
 module.exports = router;
