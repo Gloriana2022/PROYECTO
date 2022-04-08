@@ -50,7 +50,7 @@ export class CrearChoferComponent implements OnInit {
 
     this.activeRouter.params.subscribe((params: Params) => {      
       console.log(params);
-      this.id = params['numUsuario'];
+      this.id = params['id'];
 
       //***********************************************/
       //se consultan los datos de la factura 
@@ -58,7 +58,7 @@ export class CrearChoferComponent implements OnInit {
 
       if(this.id !== undefined){
         this.isInsertar = false;
-        this.textPantalla = "Modificar Usuario";
+        this.textPantalla = "Modificar Chofer";
         //se consultan los datos de la factura 
         this.choferService.get(this.id)
           .subscribe({
@@ -73,7 +73,7 @@ export class CrearChoferComponent implements OnInit {
 
               console.log(this.chofer);
 
-              this._snackbar.open('El usuario fue cargada con exito, por favor verificar', '',{
+              this._snackbar.open('El chofer fue cargada con exito, por favor verificar', '',{
                 duration: 5000,
                 horizontalPosition: 'center',
                 verticalPosition: 'bottom'
@@ -83,7 +83,7 @@ export class CrearChoferComponent implements OnInit {
             error: (e:any) => console.error(e)
         });
   
-        console.log('id factura' + this.id);
+        console.log('id' + this.id);
 
       }
 
@@ -108,19 +108,13 @@ export class CrearChoferComponent implements OnInit {
   //***************************************************************/
   //Método para modificar una factura
   //***************************************************************/
-  modificarUsuario(): void{
+  modificarChofer(): void{
     const data = {
-      numUsuario: this.form.value.numUsuario,
-      nomUsuario: this.form.value.nomUsuario,
-      apellidos: this.form.value.apellidos,
-      correo: this.form.value.correo,
+      cedula: this.form.value.cedula,
+      tipoLicencia: this.form.value.tipoLicencia,
       fechaNacimiento: this.form.value.fechaNacimiento,
-      direccion: this.form.value.direccion,
-      telefono: this.form.value.telefono,
-      tipoUsuario: this.form.value.tipoUsuario,
-      ubicacion: this.form.value.ubicacion,
-      rol: this.form.value.rol,
-      contrasenna: this.form.value.contrasenna
+      fechaVencimientoLicencia: this.form.value.fechaVencimientoLicencia,
+      choferActual: this.form.value.choferActual
     };
 
     console.log(data);
@@ -130,9 +124,9 @@ export class CrearChoferComponent implements OnInit {
         next: (res: any) => {
           this.form.reset;
           console.log(res);
-          this.router.navigateByUrl('/dashboard/usuario');
+          this.router.navigateByUrl('/dashboard/chofer');
 
-          this._snackbar.open('La factura fue modificada con exito, por favor verificar', '',{
+          this._snackbar.open('El chofer fue modificado con exito, por favor verificar', '',{
             duration: 5000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom'
@@ -148,19 +142,13 @@ export class CrearChoferComponent implements OnInit {
   //Método para guardar una nueva factura
   //***************************************************************/
 
-  saveUsuario(): void{
+  saveChofer(): void{
     const data = {
-      numUsuario: this.form.value.numUsuario,
-      nomUsuario: this.form.value.nomUsuario,
-      apellidos: this.form.value.apellidos,
-      correo: this.form.value.correo,
+      cedula: this.form.value.cedula,
+      tipoLicencia: this.form.value.tipoLicencia,
       fechaNacimiento: this.form.value.fechaNacimiento,
-      direccion: this.form.value.direccion,
-      telefono: this.form.value.telefono,
-      tipoUsuario: this.form.value.tipoUsuario,
-      ubicacion: this.form.value.ubicacion,
-      rol: this.form.value.rol,
-      contrasenna: this.form.value.contrasenna
+      fechaVencimientoLicencia: this.form.value.fechaVencimientoLicencia,
+      choferActual: this.form.value.choferActual
     };
 
     console.log(data);
@@ -170,9 +158,9 @@ export class CrearChoferComponent implements OnInit {
         next: (res: any) => {
           this.form.reset;
           console.log(res);
-          this.router.navigateByUrl('/dashboard/usuario');
+          this.router.navigateByUrl('/dashboard/chofer');
 
-          this._snackbar.open('El usuario fue agregado con exito, por favor verificar', '',{
+          this._snackbar.open('El chofer fue agregado con exito, por favor verificar', '',{
             duration: 5000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom'

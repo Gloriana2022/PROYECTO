@@ -142,7 +142,7 @@ export class CrearUsuarioComponent implements OnInit {
         next: (res: any) => {
           this.form.reset;
           console.log(res);
-          this.router.navigateByUrl('/dashboard/usuario');
+          this.router.navigateByUrl('/dashboard/crearUsuario');
 
           this._snackbar.open('El usuario fue modificado con exito, por favor verificar', '',{
             duration: 5000,
