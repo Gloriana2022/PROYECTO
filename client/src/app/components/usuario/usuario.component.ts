@@ -113,7 +113,7 @@ export class UsuarioComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(element._id);
-        this.router.navigateByUrl(`dashboard/crearUsuario/${element.numUsuario}`);
+        this.router.navigateByUrl(`dashboard/crearUsuario/${element._id}`);
       } 
 
     });

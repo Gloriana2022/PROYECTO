@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Chofer } from 'src/app/models/chofer.model';
+import { ChoferService } from 'src/app/service/chofer.service';
 
 @Component({
   selector: 'app-crear-chofer',
@@ -7,9 +12,176 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearChoferComponent implements OnInit {
 
-  constructor() { }
+  id: number = 0;
+  textPantalla: string = 'Crear Chofer';
+  isInsertar: boolean = true;
+  form:FormGroup;
+  chofer = new Chofer;
+
+  //listaEstados : Estado[] = [];
+
+  constructor(private choferService: ChoferService,
+    private fb: FormBuilder, private router: Router, 
+    private _snackbar: MatSnackBar,
+    private activeRouter: ActivatedRoute) { 
+
+    this.form = this.fb.group({
+      cedula: ['', Validators.required],
+      tipoLicencia: ['', Validators.required],
+      fechaNacimiento: ['', Validators.required],
+      fechaVencimientoLicencia: ['', Validators.required],
+      choferActual: ['', Validators.required],
+    });
+  }
+
+  
 
   ngOnInit(): void {
+    //***************************************************************/
+    //Se carga la información de los estados
+    //***************************************************************/
+
+    //this.cargarEstados();
+
+    //***************************************************************/
+    //Cuando se inicializa el compomente de consulta si el ID
+    //fue enviado por parametro
+    //***************************************************************/
+
+    this.activeRouter.params.subscribe((params: Params) => {      
+      console.log(params);
+      this.id = params['numUsuario'];
+
+      //***********************************************/
+      //se consultan los datos de la factura 
+      //***********************************************/
+
+      if(this.id !== undefined){
+        this.isInsertar = false;
+        this.textPantalla = "Modificar Usuario";
+        //se consultan los datos de la factura 
+        this.choferService.get(this.id)
+          .subscribe({
+            next: (res: any) => {
+              
+              this.chofer = res;
+              this.form.setValue({cedula: this.chofer.cedula, 
+                                  tipoLicencia: this.chofer.tipoLicencia, 
+                                  fechaNacimiento: this.chofer.fechaNacimiento, 
+                                  fechaVencimientoLicencia: this.chofer.fechaVencimientoLicencia,
+                                  choferActual: this.chofer.choferActual});
+
+              console.log(this.chofer);
+
+              this._snackbar.open('El usuario fue cargada con exito, por favor verificar', '',{
+                duration: 5000,
+                horizontalPosition: 'center',
+                verticalPosition: 'bottom'
+              });
+              
+            },
+            error: (e:any) => console.error(e)
+        });
+  
+        console.log('id factura' + this.id);
+
+      }
+
+    });
+  }
+
+  //***************************************************************/
+  //Se carga la información de los estados para el select
+  //***************************************************************/
+  /*cargarEstados(): void{
+    this.usuarioService.getAll()
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.listaEstados = res;
+        },
+        error: (e:any) => console.error(e)
+      });
+  }*/
+  
+
+  //***************************************************************/
+  //Método para modificar una factura
+  //***************************************************************/
+  modificarUsuario(): void{
+    const data = {
+      numUsuario: this.form.value.numUsuario,
+      nomUsuario: this.form.value.nomUsuario,
+      apellidos: this.form.value.apellidos,
+      correo: this.form.value.correo,
+      fechaNacimiento: this.form.value.fechaNacimiento,
+      direccion: this.form.value.direccion,
+      telefono: this.form.value.telefono,
+      tipoUsuario: this.form.value.tipoUsuario,
+      ubicacion: this.form.value.ubicacion,
+      rol: this.form.value.rol,
+      contrasenna: this.form.value.contrasenna
+    };
+
+    console.log(data);
+
+    this.choferService.update(this.id,data)
+      .subscribe({
+        next: (res: any) => {
+          this.form.reset;
+          console.log(res);
+          this.router.navigateByUrl('/dashboard/usuario');
+
+          this._snackbar.open('La factura fue modificada con exito, por favor verificar', '',{
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          })
+          
+        },
+        error: (e:any) => console.error(e)
+      });
+
+  }
+
+  //***************************************************************/
+  //Método para guardar una nueva factura
+  //***************************************************************/
+
+  saveUsuario(): void{
+    const data = {
+      numUsuario: this.form.value.numUsuario,
+      nomUsuario: this.form.value.nomUsuario,
+      apellidos: this.form.value.apellidos,
+      correo: this.form.value.correo,
+      fechaNacimiento: this.form.value.fechaNacimiento,
+      direccion: this.form.value.direccion,
+      telefono: this.form.value.telefono,
+      tipoUsuario: this.form.value.tipoUsuario,
+      ubicacion: this.form.value.ubicacion,
+      rol: this.form.value.rol,
+      contrasenna: this.form.value.contrasenna
+    };
+
+    console.log(data);
+
+    this.choferService.create(data)
+      .subscribe({
+        next: (res: any) => {
+          this.form.reset;
+          console.log(res);
+          this.router.navigateByUrl('/dashboard/usuario');
+
+          this._snackbar.open('El usuario fue agregado con exito, por favor verificar', '',{
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          })
+          
+        },
+        error: (e:any) => console.error(e)
+      });
+
   }
 
 }

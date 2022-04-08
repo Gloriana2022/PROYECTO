@@ -12,13 +12,13 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class CrearUsuarioComponent implements OnInit {
 
-  idUsuario: number = 0;
+  id: number = 0;
   textPantalla: string = 'Crear Usuario';
   isInsertar: boolean = true;
   form:FormGroup;
   usuario = new Usuario;
 
-  //listaEstados : Estado[] = [];
+  listaUsuario : Usuario[] = [];
 
   constructor(private usuarioService: UsuarioService,
     private fb: FormBuilder, private router: Router, 
@@ -47,7 +47,7 @@ export class CrearUsuarioComponent implements OnInit {
     //Se carga la información de los estados
     //***************************************************************/
 
-    //this.cargarEstados();
+    this.cargarUsuario();
 
     //***************************************************************/
     //Cuando se inicializa el compomente de consulta si el ID
@@ -56,17 +56,17 @@ export class CrearUsuarioComponent implements OnInit {
 
     this.activeRouter.params.subscribe((params: Params) => {      
       console.log(params);
-      this.idUsuario = params['numUsuario'];
+      this.id = params['id'];
 
       //***********************************************/
       //se consultan los datos de la factura 
       //***********************************************/
 
-      if(this.idUsuario !== undefined){
+      if(this.id !== undefined){
         this.isInsertar = false;
         this.textPantalla = "Modificar Usuario";
         //se consultan los datos de la factura 
-        this.usuarioService.get(this.idUsuario)
+        this.usuarioService.get(this.id)
           .subscribe({
             next: (res: any) => {
               
@@ -95,7 +95,7 @@ export class CrearUsuarioComponent implements OnInit {
             error: (e:any) => console.error(e)
         });
   
-        console.log('id factura' + this.idUsuario);
+        console.log('id' + this.id);
 
       }
 
@@ -105,16 +105,16 @@ export class CrearUsuarioComponent implements OnInit {
   //***************************************************************/
   //Se carga la información de los estados para el select
   //***************************************************************/
-  /*cargarEstados(): void{
+  cargarUsuario(): void{
     this.usuarioService.getAll()
       .subscribe({
         next: (res: any) => {
           console.log(res);
-          this.listaEstados = res;
+          this.listaUsuario = res;
         },
         error: (e:any) => console.error(e)
       });
-  }*/
+  }
   
 
   //***************************************************************/
@@ -137,14 +137,14 @@ export class CrearUsuarioComponent implements OnInit {
 
     console.log(data);
 
-    this.usuarioService.update(this.idUsuario,data)
+    this.usuarioService.update(this.id,data)
       .subscribe({
         next: (res: any) => {
           this.form.reset;
           console.log(res);
           this.router.navigateByUrl('/dashboard/usuario');
 
-          this._snackbar.open('La factura fue modificada con exito, por favor verificar', '',{
+          this._snackbar.open('El usuario fue modificado con exito, por favor verificar', '',{
             duration: 5000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom'
