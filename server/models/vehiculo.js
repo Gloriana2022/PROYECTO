@@ -21,6 +21,12 @@ const VehiculoSchema = new Schema(
          ref: "Choferes",
          required: true
        },
+       estado: //Referencia con estado
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Estados",
+        required: true
+      },
     },
         {timestamps: true}// Fecha de creacion y modificacion
 );

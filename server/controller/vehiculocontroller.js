@@ -3,14 +3,14 @@ const VehiculoModel = require("../models/vehiculo");
 
 //Método para obtener las facturas
 module.exports.get = async (req, res, next) => {
-  const vehiculos = await VehiculoModel.find().populate("chofer").exec();
+  const vehiculos = await VehiculoModel.find().populate("chofer").populate("estado").exec();
   res.json(vehiculos);
 };
 
 //Método para obtener una facturas por ID
 module.exports.getById = async (req, res, next) => {
   const id = req.params.id;
-  const vehiculo = await VehiculoModel.findOne({ _id: id }).populate("chofer").exec();
+  const vehiculo = await VehiculoModel.findOne({ _id: id }).populate("chofer").populate("estado").exec();
   res.json(vehiculo);
 };
 
