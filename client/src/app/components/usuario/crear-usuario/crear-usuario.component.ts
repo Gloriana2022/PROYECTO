@@ -36,7 +36,7 @@ export class CrearUsuarioComponent implements OnInit {
       tipoUsuario: ['', Validators.required],
       ubicacion: ['', Validators.required],
       rol: ['', Validators.required],
-      contrasenna: ['', Validators.required],
+      contrasenna: ['', Validators.required]
     });
   }
 

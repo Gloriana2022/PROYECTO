@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { InicioComponent } from '../inicio/inicio.component';
 import { UsuarioComponent } from '../usuario/usuario.component';
 import { CrearUsuarioComponent } from '../usuario/crear-usuario/crear-usuario.component';
+import { CrearVehiculoComponent } from '../vehiculo/crear-vehiculo/crear-vehiculo.component';
 import { SolicitarVehiculoComponent } from '../solicitar-vehiculo/solicitar-vehiculo.component';
 import { VehiculoComponent } from '../vehiculo/vehiculo.component';
 import { ChoferComponent } from '../chofer/chofer.component';
@@ -27,6 +28,8 @@ const routes: Routes = [
     { path: 'crearUsuario/:id', component: CrearUsuarioComponent },
     { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent },
     { path: 'vehiculo', component: VehiculoComponent },
+    { path: 'crearVehiculo', component: CrearVehiculoComponent },
+    { path: 'crearVehiculo/:id', component: CrearVehiculoComponent },
     { path: 'chofer', component: ChoferComponent },
     { path: 'crearChofer', component: CrearChoferComponent },
     { path: 'crearChofer/:id', component: CrearChoferComponent },

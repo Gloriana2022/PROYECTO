@@ -1,1 +1,76 @@
-<p>crear-vehiculo works!</p>
+<div class="container">
+    <mat-toolbar>
+        <span>{{textPantalla}}</span>
+    </mat-toolbar>
+</div>
+<div class="contenido">
+  <mat-card style="margin-top: 10px;" style="text-align: left;">
+      <form [formGroup]="form">
+          <mat-form-field >
+              <mat-label>Identificador</mat-label>
+              <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="identificador">
+          </mat-form-field>
+          <br>
+          <mat-form-field >
+            <mat-label>Año</mat-label>
+            <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="anno">
+        </mat-form-field>
+        <br>
+          <mat-form-field >
+              <mat-label>Modelo</mat-label>
+              <input matInput #input maxlength="100" placeholder="Mazda, Suzuki" autocomplete="off" formControlName="Modelo" >
+          </mat-form-field>
+          <br>
+
+          <mat-form-field >
+            <mat-label>Placa</mat-label>
+            <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="placa">
+        </mat-form-field>
+        <br>
+        
+        <mat-form-field >
+          <mat-label>Color</mat-label>
+          <input matInput #input maxlength="10" placeholder="Rojo, Verde, Blanco" autocomplete="off" formControlName="color">
+      </mat-form-field>
+      <br>
+      <mat-form-field >
+        <mat-label>Puntuación</mat-label>
+        <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="puntuacion">
+    </mat-form-field>
+    <br>
+
+          <br>
+          <mat-form-field >
+              <mat-label>Estado</mat-label>
+              <input matInput #input maxlength="200" placeholder="Bueno, Malo o Regular" autocomplete="off"  formControlName="estado" >
+          </mat-form-field>
+          <br>
+
+          <br>
+          <mat-form-field >
+              <mat-label>Ubicacion Actual</mat-label>
+              <input matInput #input maxlength="200" placeholder="Ubicacion" autocomplete="off"  formControlName="ubicacionActual" >
+          </mat-form-field>
+          <br>
+
+        <mat-form-field>
+            <mat-select formControlName="chofer"  placeholder="Seleccione un Chofer">
+                    <mat-option *ngFor="let chofer of listaChoferes" 
+                    [value]="chofer._id"> 
+                    {{chofer.choferActual}}
+              </mat-option>
+           </mat-select>
+         </mat-form-field>
+          <br>
+          <br><br>
+          <button mat-raised-button color="warn" routerLink="/dashboard/vehiculo" routerLinkActive="router-link-active" >Regresar</button>
+          <span *ngIf="isInsertar">
+              <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="saveVehiculo()">Guardar Vehiculo</button>
+          </span>
+          <span *ngIf="!isInsertar">
+              <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="modificarVehiculo()">Modificar Vehiculo</button>
+          </span>
+          
+      </form>
+  </mat-card>
+</div>

@@ -8,5 +8,6 @@ export class Vehiculo {
     puntuacion?: String;
     estado?: String;
     ubicacionActual?: String;
+    chofer?:any;
 
 }
