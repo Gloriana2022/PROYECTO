@@ -1,1 +1,103 @@
-<p>crear-solicitud-vehiculo works!</p>
+<div class="container">
+    <mat-toolbar>
+      <span>{{textPantalla}}</span>
+    </mat-toolbar>
+
+</div>
+<div class="contenido">
+    <mat-card style="margin-top: 10px;" style="text-align: left;">
+        <form [formGroup]="form">
+            <mat-form-field >
+                <mat-label>Cedula Identidad</mat-label>
+                <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="identificador">
+            </mat-form-field>
+            <br>
+            <mat-form-field >
+                <mat-label>Tiempo de Llegada</mat-label>
+                <input matInput #input maxlength="100" placeholder="Tiempo de Llegada" autocomplete="off" formControlName="tiempoLlegada" >
+            </mat-form-field>
+            <br>
+            <mat-form-field >
+                <mat-label>Tiempo de duracion</mat-label>
+                <input matInput #input maxlength="200" placeholder="Tiempo de Duracion" autocomplete="off"  formControlName="tiempoDuracion" >
+            </mat-form-field>
+            <br>
+            <mat-form-field  >
+                <mat-label>Costo de Servicio</mat-label>
+                <input matInput #input maxlength="200"  placeholder="Costo de Servicio" autocomplete="off" formControlName="costoServicio">
+            </mat-form-field>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Pago en Linea</mat-label>
+                <input matInput #input maxlength="200" placeholder="Pago en Linea" autocomplete="off"  formControlName="pagoLinea" >
+            </mat-form-field>
+            <br>
+
+
+            <br>
+            <mat-form-field >
+                <mat-label>Punto de Salida</mat-label>
+                <input matInput #input maxlength="200" placeholder="Punto de Salida" autocomplete="off"  formControlName="puntoSalida" >
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Punto de Llegada</mat-label>
+                <input matInput #input maxlength="200" placeholder="Punto de Llegada" autocomplete="off"  formControlName="puntoLlegada" >
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field >
+                <mat-label>Comentario</mat-label>
+                <input matInput #input maxlength="200" placeholder="Comentario" autocomplete="off"  formControlName="comentario" >
+            </mat-form-field>
+            <br>
+
+            <mat-form-field>
+                <mat-select formControlName="usuario"  placeholder="Selecciones un Usuario">
+                        <mat-option *ngFor="let usuario of listaUsuario" 
+                            [value]="usuario._id">
+                            {{usuario.nomUsuario}}
+                  </mat-option>
+               </mat-select>
+             </mat-form-field>
+               
+            <br>
+
+            <mat-form-field>
+                <mat-select formControlName="vehiculo"  placeholder="Seleccione un Vehiculo">
+                        <mat-option *ngFor="let vehiculo of listaVehiculo" 
+                            [value]="vehiculo._id">
+                            {{vehiculo.identificador}}
+                  </mat-option>
+               </mat-select>
+             </mat-form-field>
+               
+            <br>
+
+            <mat-form-field>
+                <mat-select formControlName="chofer"  placeholder="Seleccione un Vehiculo">
+                        <mat-option *ngFor="let chofer of listaChofer" 
+                            [value]="chofer._id">
+                            {{chofer.choferActual}}
+                  </mat-option>
+               </mat-select>
+             </mat-form-field>
+               
+            <br>
+            
+            <br><br>
+            <button mat-raised-button color="warn" routerLink="/dashboard/solicitarVehiculo" routerLinkActive="router-link-active" >Regresar</button>
+            <span *ngIf="isInsertar">
+                <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="saveSolicitud()">Guardar Usuario</button>
+            </span>
+            <span *ngIf="!isInsertar">
+                <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="modificarSolicitud()">Modificar Usuario</button>
+            </span>
+            
+        </form>
+    </mat-card>
+</div>

@@ -9,6 +9,10 @@ import { SolicitarVehiculoComponent } from '../solicitar-vehiculo/solicitar-vehi
 import { VehiculoComponent } from '../vehiculo/vehiculo.component';
 import { ChoferComponent } from '../chofer/chofer.component';
 import { CrearChoferComponent } from '../chofer/crear-chofer/crear-chofer.component';
+
+import { CrearSolicitudVehiculoComponent } from '../solicitar-vehiculo/crear-solicitud-vehiculo/crear-solicitud-vehiculo.component';
+
+
 import { ReportesComponent } from '../reportes/reportes.component';
 
 
@@ -26,6 +30,12 @@ const routes: Routes = [
     { path: 'chofer', component: ChoferComponent },
     { path: 'crearChofer', component: CrearChoferComponent },
     { path: 'crearChofer/:id', component: CrearChoferComponent },
+
+    { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent },
+    { path: 'CrearsolicitarVehiculo', component: CrearSolicitudVehiculoComponent },
+    { path: 'CrearsolicitarVehiculo/:id', component: CrearSolicitudVehiculoComponent },
+
+
     { path: 'reportes', component: ReportesComponent }
   ]
 }  

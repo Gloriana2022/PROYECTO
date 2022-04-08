@@ -4,3 +4,105 @@
     </mat-toolbar>
 
 </div>
+<div class="contenido">
+  <br>
+  <button mat-raised-button color="primary" routerLink="/dashboard/CrearsolicitarVehiculo" routerLinkActive="router-link-active" >Agregar Solicitud</button>
+
+  <div  *ngIf="listaSolicitudVehiculos.length==0">
+      <p>No existen datos para mostrar</p>
+  </div>
+
+  <mat-form-field appearance="standard">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ejm. Cristhian" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="identificador">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Identificador</th>
+        <td mat-cell *matCellDef="let element"> {{element.identificador}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="tiempoLlegada">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tiempo Llegada </th>
+        <td mat-cell *matCellDef="let element"> {{element.tiempoLlegada}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="tiempoDuracion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tiempo Duracion </th>
+        <td mat-cell *matCellDef="let element"> {{element.tiempoDuracion}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="costoServicio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Costo Servicio </th>
+        <td mat-cell *matCellDef="let element"> {{element.costoServicio}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="pagoLinea">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pago en Linea</th>
+        <td mat-cell *matCellDef="let element"> {{element.pagoLinea}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="puntoSalida">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Punto de Salida</th>
+          <td mat-cell *matCellDef="let element"> {{element.puntoSalida}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="puntoLlegada">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Punto de Llegada</th>
+          <td mat-cell *matCellDef="let element"> {{element.puntoLlegada}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="comentario">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Comentario</th>
+          <td mat-cell *matCellDef="let element"> {{element.comentario}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="usuario">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> usuario</th>
+          <td mat-cell *matCellDef="let element"> {{element.usuario.nomUsuario}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="vehiculo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Vehiculo</th>
+          <td mat-cell *matCellDef="let element"> {{element.vehiculo.identificador}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="chofer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Chofer</th>
+          <td mat-cell *matCellDef="let element"> {{element.chofer.choferActual}} </td>
+        </ng-container>
+
+      <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef style="text-align: right;"> Acciones </th>
+          <td mat-cell *matCellDef="let element" style="text-align: right;"> 
+              <a  (click)="modificarSolicitudVehiculo(element);">
+                  <mat-icon
+                  mat-raised-button #tooltip="matTooltip"
+                  matTooltip="Editar información"
+                  class="cursorPointer" style="color: #d49c18;">edit</mat-icon>
+              </a>
+              <a (click)="eliminarSolicitudVehiculo(element);"> 
+                  <mat-icon 
+                  mat-raised-button #tooltip="matTooltip"
+                  matTooltip="Eliminar información"
+                  class="cursorPointer" style="color: #af1313;">delete</mat-icon>
+              </a>
+          </td>
+        </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

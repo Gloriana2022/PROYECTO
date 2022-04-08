@@ -8,4 +8,7 @@ export class SolicitudVehiculo {
     puntoSalida?: String;
     puntoLlegada?:String;
     comentario?: String;
+    usuario?: any; //Referencia con estado
+    vehiculo?: any; //Referencia con estado
+    chofer?: any; //Referencia con estado
 }

@@ -19,7 +19,7 @@ export class SolicitarVehiculoComponent implements OnInit {
 listaSolicitudVehiculos : SolicitudVehiculo[] = [];
 
 //Configuración de la tabla
-displayedColumns: string[] = ['DatosVehiculo', 'DatosChofer','TiempoLlegada','TiempoDuracion','CostoServicio','PagoLinea','PuntoSalida','PuntoLlegada','Comentario','DatosUsuario', 'acciones'];
+displayedColumns: string[] = ['identificador', 'tiempoLlegada','tiempoDuracion','costoServicio','pagoLinea','puntoSalida','puntoLlegada','comentario','usuario','vehiculo','chofer', 'acciones'];
 dataSource!:  MatTableDataSource<any>;
 
 
@@ -110,7 +110,7 @@ modificarSolicitudVehiculo(element:any){
   }).then((result) => {
     if (result.isConfirmed) {
       console.log(element._id);
-      this.router.navigateByUrl(`dashboard/detalleChofer/${element._id}`);
+      this.router.navigateByUrl(`dashboard/CrearsolicitarVehiculo/${element._id}`);
     } 
 
   });
