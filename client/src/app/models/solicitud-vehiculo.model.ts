@@ -4,7 +4,7 @@ export class SolicitudVehiculo {
     tiempoLlegada?: Number;
     tiempoDuracion?: Number;
     costoServicio?: Number;
-    pagoLinea?:Number;
+    pagoLinea?:String;
     puntoSalida?: String;
     puntoLlegada?:String;
     comentario?: String;

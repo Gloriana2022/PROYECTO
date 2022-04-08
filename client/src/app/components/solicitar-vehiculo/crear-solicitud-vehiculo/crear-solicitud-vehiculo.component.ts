@@ -59,6 +59,7 @@ export class CrearSolicitudVehiculoComponent implements OnInit {
     this.cargarUsuario();
     this.cargarSolicitud();
     this.cargarChofer();
+    this.cargarVehiculo();
    
 
     //***************************************************************/

@@ -29,12 +29,11 @@
         <td mat-cell *matCellDef="let element"> {{element.identificador}} </td>
       </ng-container>
     
-      <!-- Name Column -->
-      <ng-container matColumnDef="anno">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Año </th>
-        <td mat-cell *matCellDef="let element"> {{element.anno}} </td>
+      <ng-container matColumnDef="chofer">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Chofer</th>
+        <td mat-cell *matCellDef="let element"> {{element.chofer.choferActual}} </td>
       </ng-container>
-    
+
       <!-- Weight Column -->
       <ng-container matColumnDef="Modelo">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Modelo </th>
@@ -47,6 +46,12 @@
         <td mat-cell *matCellDef="let element"> {{element.placa}} </td>
       </ng-container>
 
+       <!-- Name Column -->
+       <ng-container matColumnDef="anno">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Año </th>
+        <td mat-cell *matCellDef="let element"> {{element.anno}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="color">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Color</th>
         <td mat-cell *matCellDef="let element"> {{element.color}} </td>
@@ -57,20 +62,19 @@
           <td mat-cell *matCellDef="let element"> {{element.puntuacion}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="ubicacionActual">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación Actual</th>
+          <td mat-cell *matCellDef="let element"> {{element.ubicacionActual}} </td>
+        </ng-container>
+
 
         <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado</th>
           <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="ubicacionActual">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación Actual</th>
-          <td mat-cell *matCellDef="let element"> {{element.ubicacionActual}} </td>
-        </ng-container>
-        <ng-container matColumnDef="chofer">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Chofer</th>
-          <td mat-cell *matCellDef="let element"> {{element.chofer.choferActual}} </td>
-        </ng-container>
+       
+       
 
 
       <ng-container matColumnDef="acciones">
