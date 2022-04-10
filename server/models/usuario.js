@@ -18,12 +18,7 @@ const UsuarioSchema = new Schema(
        ubicacion: String,
        rol: String,
        contrasenna: String,
-       estado: //Referencia con estado
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Estados",
-        required: true
-      },
+       estado:String,
     },
         {timestamps: true}// Fecha de creacion y modificacion
 );

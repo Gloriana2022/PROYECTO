@@ -13,20 +13,14 @@ const VehiculoSchema = new Schema(
        placa: String, 
        color: String, 
        puntuacion: String,
-       estado: String,
        ubicacionActual: String,
+       estado:String,
        chofer: //Referencia con estado
        {
          type: Schema.Types.ObjectId,
          ref: "Choferes",
          required: true
        },
-       estado: //Referencia con estado
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Estados",
-        required: true
-      },
     },
         {timestamps: true}// Fecha de creacion y modificacion
 );

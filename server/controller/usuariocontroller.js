@@ -3,14 +3,14 @@ const UsuarioModel = require("../models/usuario");
 
 //Método para obtener las facturas
 module.exports.get = async (req, res, next) => {
-  const usuarios = await UsuarioModel.find().populate("estado").exec();
+  const usuarios = await UsuarioModel.find().exec();
   res.json(usuarios);
 };
 
 //Método para obtener una facturas por ID
 module.exports.getById = async (req, res, next) => {
   const id = req.params.id;
-  const usuario = await UsuarioModel.findOne({ _id: id }).populate("estado").exec();
+  const usuario = await UsuarioModel.findOne({ _id: id }).exec();
   res.json(usuario);
 };
 
