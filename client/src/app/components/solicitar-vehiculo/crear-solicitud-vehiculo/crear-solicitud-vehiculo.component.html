@@ -71,7 +71,7 @@
                 <mat-select formControlName="vehiculo"  placeholder="Seleccione un Vehiculo">
                         <mat-option *ngFor="let vehiculo of listaVehiculo" 
                             [value]="vehiculo._id">
-                            {{vehiculo.identificador}}
+                            {{vehiculo.Modelo}}
                   </mat-option>
                </mat-select>
              </mat-form-field>
@@ -79,7 +79,7 @@
             <br>
 
             <mat-form-field>
-                <mat-select formControlName="chofer"  placeholder="Seleccione un Vehiculo">
+                <mat-select formControlName="chofer"  placeholder="Seleccione un Chofer">
                         <mat-option *ngFor="let chofer of listaChofer" 
                             [value]="chofer._id">
                             {{chofer.choferActual}}
