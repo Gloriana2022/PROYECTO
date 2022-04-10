@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Estado } from 'src/app/models/estado.model';
 import { Usuario } from 'src/app/models/usuario.model';
+import { EstadoService } from 'src/app/service/estado.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
@@ -19,8 +21,9 @@ export class CrearUsuarioComponent implements OnInit {
   usuario = new Usuario;
 
   listaUsuario : Usuario[] = [];
+  listaEstados : Estado[] = [];
 
-  constructor(private usuarioService: UsuarioService,
+  constructor(private usuarioService: UsuarioService,private estadoService: EstadoService,
     private fb: FormBuilder, private router: Router, 
     private _snackbar: MatSnackBar,
     private activeRouter: ActivatedRoute) { 
@@ -49,6 +52,7 @@ export class CrearUsuarioComponent implements OnInit {
     //***************************************************************/
 
     this.cargarUsuario();
+    this.cargarEstados();
 
     //***************************************************************/
     //Cuando se inicializa el compomente de consulta si el ID
@@ -83,7 +87,7 @@ export class CrearUsuarioComponent implements OnInit {
                                   ubicacion: this.usuario.ubicacion,
                                   rol: this.usuario.rol,
                                   contrasenna: this.usuario.contrasenna,
-                                  estado: this.usuario.estado});
+                                  estado: this.usuario.estado._id});
 
               console.log(this.usuario);
 
@@ -113,6 +117,17 @@ export class CrearUsuarioComponent implements OnInit {
         next: (res: any) => {
           console.log(res);
           this.listaUsuario = res;
+        },
+        error: (e:any) => console.error(e)
+      });
+  }
+
+  cargarEstados(): void{
+    this.estadoService.getAll()
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.listaEstados = res;
         },
         error: (e:any) => console.error(e)
       });

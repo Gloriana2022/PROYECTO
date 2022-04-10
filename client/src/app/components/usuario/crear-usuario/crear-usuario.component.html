@@ -68,10 +68,14 @@
             </mat-form-field>
             <br>
 
-            <mat-form-field >
-                <mat-label>Estado</mat-label>
-                <input matInput #input maxlength="200" placeholder="Activo-Inactivo" autocomplete="off"  formControlName="estado" >
-            </mat-form-field>
+            <mat-form-field>
+                <mat-select formControlName="estado"  placeholder="Selecciones un estado">
+                        <mat-option *ngFor="let estado of listaEstados" 
+                            [value]="estado._id">
+                            {{estado.nombre}}
+                  </mat-option>
+               </mat-select>
+             </mat-form-field>
 
             <br>
 

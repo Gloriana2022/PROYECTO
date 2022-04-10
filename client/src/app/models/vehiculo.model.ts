@@ -6,7 +6,7 @@ export class Vehiculo {
     placa?: String;
     color?: String; 
     puntuacion?: String;
-    estado?: String;
+    estado?: any;
     ubicacionActual?: String;
     chofer?:any;
 

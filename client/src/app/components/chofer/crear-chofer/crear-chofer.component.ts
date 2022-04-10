@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Chofer } from 'src/app/models/chofer.model';
+import { Estado } from 'src/app/models/estado.model';
 import { ChoferService } from 'src/app/service/chofer.service';
+import { EstadoService } from 'src/app/service/estado.service';
 @Component({
   selector: 'app-crear-chofer',
   templateUrl: './crear-chofer.component.html',
@@ -17,7 +19,9 @@ export class CrearChoferComponent implements OnInit {
   form:FormGroup;
   chofer = new Chofer;
 
-  constructor(private choferService: ChoferService,
+  listaEstados : Estado[] = [];
+
+  constructor(private choferService: ChoferService,private estadoService: EstadoService,
     private fb: FormBuilder, private router: Router, 
     private _snackbar: MatSnackBar,
     private activeRouter: ActivatedRoute) { 
@@ -38,7 +42,7 @@ export class CrearChoferComponent implements OnInit {
     //***************************************************************/
     //Se carga la información de los estados
     //***************************************************************/
-
+    this.cargarEstados();
  
 
     //***************************************************************/
@@ -68,7 +72,7 @@ export class CrearChoferComponent implements OnInit {
                                   fechaNacimiento: this.chofer.fechaNacimiento, 
                                   fechaVencimientoLicencia: this.chofer.fechaVencimientoLicencia,
                                   choferActual: this.chofer.choferActual,
-                                  estado: this.chofer.estado});
+                                  estado: this.chofer.estado._id});
 
               console.log(this.chofer);
 
@@ -92,7 +96,16 @@ export class CrearChoferComponent implements OnInit {
   //***************************************************************/
   //Se carga la información de los estados para el select
   //***************************************************************/
-
+  cargarEstados(): void{
+    this.estadoService.getAll()
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.listaEstados = res;
+        },
+        error: (e:any) => console.error(e)
+      });
+  }
   
 
   //***************************************************************/

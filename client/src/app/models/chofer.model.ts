@@ -5,5 +5,5 @@ export class Chofer {
     tipoLicencia?: String;
     fechaNacimiento?: String;
     fechaVencimientoLicencia?: String;
-    estado?: String;
+    estado?: any;
 }
