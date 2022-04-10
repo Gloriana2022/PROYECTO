@@ -17,12 +17,15 @@ import { CrearSolicitudVehiculoComponent } from '../solicitar-vehiculo/crear-sol
 import { ReportesComponent } from '../reportes/reportes.component';
 
 
+import { ContactenosComponent } from '../contactenos/contactenos.component';
+import { LoginComponent } from '../login/login.component';
+
 
 
 const routes: Routes = [
   { 
     path: '', component: DashboardComponent, children: [
-    { path: '', component: InicioComponent },
+    { path: 'inicio', component: InicioComponent },
     { path: 'usuario', component: UsuarioComponent },
     { path: 'crearUsuario', component: CrearUsuarioComponent },
     { path: 'crearUsuario/:id', component: CrearUsuarioComponent },
@@ -37,6 +40,9 @@ const routes: Routes = [
     { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent },
     { path: 'CrearsolicitarVehiculo', component: CrearSolicitudVehiculoComponent },
     { path: 'CrearsolicitarVehiculo/:id', component: CrearSolicitudVehiculoComponent },
+
+    { path: 'login', component: LoginComponent },
+    { path: 'contactenos', component: ContactenosComponent },
 
 
     { path: 'reportes', component: ReportesComponent }
