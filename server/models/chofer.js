@@ -12,7 +12,12 @@ const ChoferSchema = new Schema(
        fechaNacimiento: String,
        fechaVencimientoLicencia: String,
        choferActual: String,
-       estado:String,
+       estado: //Referencia con estado
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Estados",
+        required: true
+      },
     },
         {timestamps: true}// Fecha de creacion y modificacion
 );

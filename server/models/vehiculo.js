@@ -14,7 +14,12 @@ const VehiculoSchema = new Schema(
        color: String, 
        puntuacion: String,
        ubicacionActual: String,
-       estado:String,
+       estado: //Referencia con estado
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Estados",
+        required: true
+      },
        chofer: //Referencia con estado
        {
          type: Schema.Types.ObjectId,
