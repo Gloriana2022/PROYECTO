@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Chofer } from 'src/app/models/chofer.model';
-import { Estado } from 'src/app/models/estado.model';
 import { Vehiculo } from 'src/app/models/vehiculo.model';
 import { ChoferService } from 'src/app/service/chofer.service';
-import { EstadoService } from 'src/app/service/estado.service';
 import { VehiculoService } from 'src/app/service/vehiculo.service';
+
+interface Estado {
+  value: string;
+  viewValue: string;
+}
+
 
 @Component({
   selector: 'app-crear-vehiculo',
@@ -24,10 +28,13 @@ export class CrearVehiculoComponent implements OnInit {
 
   listaVehiculos : Vehiculo[] = [];
   listaChoferes : Chofer[] = [];
-  listaEstado : Estado[] = [];
+  estado: string[] = [
+    'Activo',
+    'Inactivo'
+  ];
+  
 
-  constructor(private vehiculoService: VehiculoService,private estadoService: EstadoService,
-    private choferService: ChoferService,
+  constructor(private vehiculoService: VehiculoService,private choferService: ChoferService,
     private fb: FormBuilder, private router: Router, 
     private _snackbar: MatSnackBar,
     private activeRouter: ActivatedRoute) { 
@@ -52,7 +59,6 @@ export class CrearVehiculoComponent implements OnInit {
 
     this.cargarVehiculo();
     this.cargarChofer();
-    this.cargarEstado();
 
     //***************************************************************/
     //Cuando se inicializa el compomente de consulta si el ID
@@ -82,7 +88,7 @@ export class CrearVehiculoComponent implements OnInit {
                                   placa: this.vehiculo.placa,
                                   color: this.vehiculo.color,
                                   puntuacion: this.vehiculo.puntuacion,
-                                  estado: this.vehiculo.estado._id,
+                                  estado: this.vehiculo.estado,
                                   ubicacionActual: this.vehiculo.ubicacionActual,
                                   chofer: this.vehiculo.chofer._id});
 
@@ -130,16 +136,7 @@ export class CrearVehiculoComponent implements OnInit {
       });
   }
 
-  cargarEstado(): void{
-    this.estadoService.getAll()
-      .subscribe({
-        next: (res: any) => {
-          console.log(res);
-          this.listaEstado = res;
-        },
-        error: (e:any) => console.error(e)
-      });
-  }
+ 
   //***************************************************************/
   //Método para modificar una factura
   //***************************************************************/

@@ -34,42 +34,33 @@
             </mat-form-field>
             <br>
 
-
-            <br>
             <mat-form-field >
                 <mat-label>Direccion</mat-label>
                 <input matInput #input maxlength="200" placeholder="Dirección exacta" autocomplete="off"  formControlName="direccion" >
             </mat-form-field>
             <br>
 
-            <br>
             <mat-form-field >
                 <mat-label>Telefono</mat-label>
                 <input matInput #input maxlength="200" placeholder="Telefono" autocomplete="off"  formControlName="telefono" >
             </mat-form-field>
             <br>
 
-            <br>
             <mat-form-field >
                 <mat-label>Tipo Usuario</mat-label>
                 <input matInput #input maxlength="200" placeholder="Tipo Usuario" autocomplete="off"  formControlName="tipoUsuario" >
             </mat-form-field>
             <br>
 
-            <br>
             <mat-form-field >
                 <mat-label>Ubicacion</mat-label>
                 <input matInput #input maxlength="200" placeholder="Ubicacion" autocomplete="off"  formControlName="ubicacion" >
             </mat-form-field>
             <br>
-
-            <br>
             <mat-form-field >
                 <mat-label>Rol</mat-label>
                 <input matInput #input maxlength="200" placeholder="Rol" autocomplete="off"  formControlName="rol" >
             </mat-form-field>
-            <br>
-
             <br>
             <mat-form-field >
                 <mat-label>Contraseña</mat-label>
@@ -77,15 +68,12 @@
             </mat-form-field>
             <br>
 
-            <mat-form-field>
-                <mat-select formControlName="chofer"  placeholder="Seleccione un estado">
-                        <mat-option *ngFor="let estado of listaEstado" 
-                        [value]="estado._id"> 
-                        {{estado.nombre}}
-                  </mat-option>
-               </mat-select>
-             </mat-form-field>
-              <br>
+            <mat-form-field >
+                <mat-label>Estado</mat-label>
+                <input matInput #input maxlength="200" placeholder="Activo-Inactivo" autocomplete="off"  formControlName="estado" >
+            </mat-form-field>
+
+            <br>
 
             <br><br>
             <button mat-raised-button color="warn" routerLink="/dashboard/usuario" routerLinkActive="router-link-active" >Regresar</button>

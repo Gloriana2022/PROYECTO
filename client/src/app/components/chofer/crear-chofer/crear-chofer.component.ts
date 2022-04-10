@@ -3,10 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Chofer } from 'src/app/models/chofer.model';
-import { Estado } from 'src/app/models/estado.model';
 import { ChoferService } from 'src/app/service/chofer.service';
-import { EstadoService } from 'src/app/service/estado.service';
-
 @Component({
   selector: 'app-crear-chofer',
   templateUrl: './crear-chofer.component.html',
@@ -20,9 +17,7 @@ export class CrearChoferComponent implements OnInit {
   form:FormGroup;
   chofer = new Chofer;
 
-  listaEstado : Estado[] = [];
-
-  constructor(private choferService: ChoferService, private estadoService: EstadoService,
+  constructor(private choferService: ChoferService,
     private fb: FormBuilder, private router: Router, 
     private _snackbar: MatSnackBar,
     private activeRouter: ActivatedRoute) { 
@@ -44,7 +39,7 @@ export class CrearChoferComponent implements OnInit {
     //Se carga la información de los estados
     //***************************************************************/
 
-    this.cargarEstados();
+ 
 
     //***************************************************************/
     //Cuando se inicializa el compomente de consulta si el ID
@@ -72,7 +67,8 @@ export class CrearChoferComponent implements OnInit {
                                   tipoLicencia: this.chofer.tipoLicencia, 
                                   fechaNacimiento: this.chofer.fechaNacimiento, 
                                   fechaVencimientoLicencia: this.chofer.fechaVencimientoLicencia,
-                                  choferActual: this.chofer.choferActual});
+                                  choferActual: this.chofer.choferActual,
+                                  estado: this.chofer.estado});
 
               console.log(this.chofer);
 
@@ -96,16 +92,7 @@ export class CrearChoferComponent implements OnInit {
   //***************************************************************/
   //Se carga la información de los estados para el select
   //***************************************************************/
-  cargarEstados(): void{
-    this.estadoService.getAll()
-      .subscribe({
-        next: (res: any) => {
-          console.log(res);
-          this.listaEstado = res;
-        },
-        error: (e:any) => console.error(e)
-      });
-  }
+
   
 
   //***************************************************************/
@@ -117,7 +104,8 @@ export class CrearChoferComponent implements OnInit {
       tipoLicencia: this.form.value.tipoLicencia,
       fechaNacimiento: this.form.value.fechaNacimiento,
       fechaVencimientoLicencia: this.form.value.fechaVencimientoLicencia,
-      choferActual: this.form.value.choferActual
+      choferActual: this.form.value.choferActual,
+      estado: this.form.value.estado
     };
 
     console.log(data);
@@ -151,7 +139,8 @@ export class CrearChoferComponent implements OnInit {
       tipoLicencia: this.form.value.tipoLicencia,
       fechaNacimiento: this.form.value.fechaNacimiento,
       fechaVencimientoLicencia: this.form.value.fechaVencimientoLicencia,
-      choferActual: this.form.value.choferActual
+      choferActual: this.form.value.choferActual,
+      estado: this.form.value.estado
     };
 
     console.log(data);

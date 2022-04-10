@@ -20,7 +20,6 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
-
 //Componente para formularios
 import { ReactiveFormsModule } from '@angular/forms';
 
