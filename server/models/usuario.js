@@ -10,14 +10,25 @@ const UsuarioSchema = new Schema(
        },
        nomUsuario: String,
        apellidos: String,
-       correo: String,
+       correo: {
+        type: String,
+        unique: true,
+        required: true,
+      },
        fechaNacimiento: String,
        direccion: String,
        telefono: Number,
        tipoUsuario: String,
        ubicacion: String,
-       rol: String,
-       contrasenna: String,
+       rol: {
+        type: String,
+        default: "user",
+        enum: ["user", "admin", "driver"]
+      },
+       contrasenna: {
+        type: String,
+        required: true,
+      },
        estado: //Referencia con estado
       {
         type: Schema.Types.ObjectId,
