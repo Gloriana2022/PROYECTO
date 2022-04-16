@@ -9,11 +9,11 @@ const {permit}  = require("../middleware/authorization");
 const usuarioController = require("../controller/usuariocontroller");
 //Definicion de las rutas de usuario
 //ruta para obtener todas las usuarios de la base de datos 
-router.get("/",auth,permit("admin"), usuarioController.get);
-router.get("/:id",auth, usuarioController.getById);
-router.post("/", auth, usuarioController.create);
-router.delete("/:id",auth, usuarioController.delete);
-router.put("/:id",auth, usuarioController.update);
+router.get("/",/*auth,permit("admin"),*/ usuarioController.get);
+router.get("/:id"/*,auth*/, usuarioController.getById);
+router.post("/"/*, auth*/, usuarioController.create);
+router.delete("/:id"/*,auth*/, usuarioController.delete);
+router.put("/:id"/*,auth*/, usuarioController.update);
 //
 //
 router.post("/signup", usuarioController.signup);

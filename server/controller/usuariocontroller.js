@@ -67,7 +67,7 @@ module.exports.signin = async (req, res, next) => {
 
   const { correo, contrasenna } = req.body;
 
-  const user = await UserModel.findOne({ correo: correo }).exec();
+  const user = await UsuarioModel.findOne({ correo: correo }).exec();
 
   if (!user) {
       res.status(401).send({ success: false, msg: 'Autenticación incorrecta, por favor valide el usuario y contraseña' });

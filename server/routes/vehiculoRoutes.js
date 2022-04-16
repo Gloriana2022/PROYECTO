@@ -9,11 +9,11 @@ const {permit}  = require("../middleware/authorization");
 const vehiculoController = require("../controller/vehiculocontroller");
 //Definicion de las rutas de vehiculo
 //ruta para obtener todas las vehiculos de la base de datos 
-router.get("/",auth,permit("driver", "admin"), vehiculoController.get);
-router.get("/:id",auth, vehiculoController.getById);
-router.post("/",auth, vehiculoController.create);
-router.delete("/:id",auth, vehiculoController.delete);
-router.put("/:id",auth, vehiculoController.update);
+router.get("/",/*auth,permit("driver", "admin"),*/ vehiculoController.get);
+router.get("/:id",/*auth,*/ vehiculoController.getById);
+router.post("/",/*auth,*/ vehiculoController.create);
+router.delete("/:id",/*auth,*/ vehiculoController.delete);
+router.put("/:id",/*auth,*/ vehiculoController.update);
 //
 //
 module.exports = router;
