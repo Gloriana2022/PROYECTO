@@ -33,4 +33,9 @@ export class UsuarioService {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 
+  singin(data: any): Observable<any> {
+    return this.http.post(baseUrl  + '/signin/', data);
+  }
+
+
 }

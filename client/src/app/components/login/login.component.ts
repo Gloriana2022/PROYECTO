@@ -1,12 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario.model';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { UsuarioService } from '../../service/usuario.service';
-import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -15,108 +12,74 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  //Lista de Usuarios
-  listaUsuarios : Usuario[] = [];
+  form:FormGroup;
+  msg: string = '';
+  loading = false;
 
-  //Configuración de la tabla
-  displayedColumns: string[] = ['numUsuario', 'nomUsuario', 'acciones'];
-  dataSource!:  MatTableDataSource<any>;
-
-
-  //Para la paginación
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor( private usuarioService : UsuarioService, private _snackbar: MatSnackBar, private router: Router ) { }
+  
+  constructor(private router: Router, private fb: FormBuilder, private _snackbar: MatSnackBar, 
+              private usuarioService: UsuarioService, private tokenStorage: TokenStorageService) { 
+    this.form = this.fb.group({
+      correo: ['', Validators.required],
+      contrasenna: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
-    this.consultarUsuario();
-    
+    this.loading = false;
+    this.tokenStorage.signOut();
   }
 
-  ngAfterViewInit() {
-  }
+  ingresar() {
+    const dataInput = {
+      username: this.form.value.usuario,
+      password: this.form.value.password
+    };
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-
-  consultarUsuario():void{
-    this.usuarioService.getAll()
+    //Llama al método de login
+    this.usuarioService.singin(dataInput)
       .subscribe({
          next: (data) => {
-           this.listaUsuarios = data;
-           this.dataSource = new MatTableDataSource(this.listaUsuarios);
-           this.dataSource.paginator = this.paginator;
-           this.dataSource.sort = this.sort;
-           console.log(data);
+          console.log(data);
+          //se guarda la información en el local storage
+          this.tokenStorage.saveToken(data.token);
+          this.tokenStorage.saveUser(data);
+
+          //Se valida si es un acceso u otro
+          if (data.user.role === 'user') {
+            this.router.navigateByUrl('/perfil');
+          }
+          if (data.user.role === 'admin') {
+            this.router.navigateByUrl('/dashboard');
+          }
+          this.loading = false;
+          this.showMsg('Bienvenido al sistema!');
          },
-         error: (e: any) => console.error(e)
+         error: (e: any) => {
+          if(e.status ===  401){//Acceso no autorizado
+            if(e.error.success=== false){}
+              this.showMsg(e.error.msg);
+           }
+           this.loading = false;
+         }
       });
-    
   }
 
-  eliminarUsuario(element:any){
-
-    Swal.fire({
-      title: `¿Desea eliminar el usuario #${element.numUsuario} la a nombre de ${element.nomUsuario}?`,
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        console.log(element._id);
-        this.usuarioService.delete(element._id)
-          .subscribe({
-             next: (data) => {
-               this.consultarUsuario();
-               console.log(data);
-              
-               this._snackbar.open('El usuario eliminado correctamente','',{
-                  duration: 5000,
-                  horizontalPosition: 'center',
-                  verticalPosition: 'bottom'
-                });
-    
-             },
-             error: (e: any) => console.error(e)
-          });
-      } 
-
-    });
-    
-  } // fin del médoto de eliminar
+  showMsg(msg:string){
+    this._snackbar.open(msg, 'Cerrar',{
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    })
+  };
 
 
-  modificarUsuario(element:any){
-
-    Swal.fire({
-      title: `¿Desea eliminar el usuario #${element.numUsuario} con el nombre de ${element.nomUsuario}?`,
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, modificar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log(element._id);
-        this.router.navigateByUrl(`dashboard/detalleUsuario/${element._id}`);
-      } 
-
-    });
-
-  }// fin del método modificar
-
-
+  //Metodo solo simula el proceso de login en un tiempo más extenso
+  simulacionLoading(){
+    //Muestra el mensaje de cargando
+    this.loading = true;
+    setTimeout(() => {
+      this.ingresar();
+    }, 1000);
+  }
 }
