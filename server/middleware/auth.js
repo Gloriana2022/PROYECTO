@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
-const userModel = require("../models/usuario");
+const usuarioModel = require("../models/usuario");
 //Se obtiene las variables de entorno
-const config = process.env;
-
 //Se verifica que el token sea valido
 const auth = async (req, res, next) => {
   const token =
@@ -14,7 +12,7 @@ const auth = async (req, res, next) => {
   try {
     const { username } = jwt.verify(token, config.SECRETWORDJWT);
     console.log(username);
-    req.user = await userModel.findOne({ username }).exec();
+    req.user = await usuarioModel.findOne({ username }).exec();
   } catch (err) {
     return res.status(401).send("El token no es valido");
   }

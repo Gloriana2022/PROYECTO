@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const config = process.env;
 
+/*
 //Método para obtener las facturas
 module.exports.get = async (req, res, next) => {
   const usuarios = await UsuarioModel.find().populate("estado").exec();
@@ -45,14 +46,14 @@ module.exports.update = async (req, res, next) => {
   res.json(usuario);
 };
 
+*/
 
-// creación de nuevos usuarios
 module.exports.signup = async (req, res, next) => {
-  const { username, password, role} = req.body;
+  const {numUsuario,nombre, apellidos, username, password, role,fechaNacimiento,direccion,telefono,tipoUsuario,ubicacion,estado} = req.body;
   if (!username || !password) {
       res.json({ success: false, msg: 'Por favor envié los datos de usuario y contraseña!' });
   } else {
-      var newUser = new UsuarioModel({ username: username, password: password, role:role });
+      var newUser = new UsuarioModel({numUsuario:numUsuario,nombre:nombre,apellidos:apellidos, username: username, password: password, role:role,fechaNacimiento:fechaNacimiento,direccion:direccion,telefono:telefono,tipoUsuario:tipoUsuario,ubicacion: ubicacion,estado:estado});
       // save the user
       newUser.save(function (err) {
           if (err) {
@@ -68,7 +69,7 @@ module.exports.signin = async (req, res, next) => {
 
   const { username, password } = req.body;
 
-  const user = await UsuarioModel.findOne({ username: username }).exec();
+  const user = await UserModel.findOne({ username: username }).exec();
 
   if (!user) {
       res.status(401).send({ success: false, msg: 'Autenticación incorrecta, por favor valide el usuario y contraseña' });
@@ -93,3 +94,4 @@ module.exports.signin = async (req, res, next) => {
       });
   }
 };
+
