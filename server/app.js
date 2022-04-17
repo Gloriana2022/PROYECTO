@@ -14,7 +14,7 @@ const solicitudVehiculoRoutes = require("./routes/solicitudVehiculoRoutes");
 const usuarioRoutes = require("./routes/usuarioRoutes");
 const vehiculoRoutes = require("./routes/vehiculoRoutes");
 const estadoRouter = require("./routes/estadoRoute");
-const userRouter = require("./routes/user");
+const userRouter = require("./routes/userRoutes");
 //Variable de entorno
 dotEnv.config();
 
