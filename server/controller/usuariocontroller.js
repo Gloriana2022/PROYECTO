@@ -45,13 +45,14 @@ module.exports.update = async (req, res, next) => {
   res.json(usuario);
 };
 
+
 // creación de nuevos usuarios
 module.exports.signup = async (req, res, next) => {
-  const { correo, contrasenna, rol} = req.body;
-  if (!correo || !contrasenna) {
+  const { username, password, role} = req.body;
+  if (!username || !password) {
       res.json({ success: false, msg: 'Por favor envié los datos de usuario y contraseña!' });
   } else {
-      var newUser = new UserModel({ correo: correo, contrasenna: contrasenna, rol:rol });
+      var newUser = new UsuarioModel({ username: username, password: password, role:role });
       // save the user
       newUser.save(function (err) {
           if (err) {
@@ -65,24 +66,24 @@ module.exports.signup = async (req, res, next) => {
 // logueo de usuarios
 module.exports.signin = async (req, res, next) => {
 
-  const { correo, contrasenna } = req.body;
+  const { username, password } = req.body;
 
-  const user = await UsuarioModel.findOne({ correo: correo }).exec();
+  const user = await UsuarioModel.findOne({ username: username }).exec();
 
   if (!user) {
       res.status(401).send({ success: false, msg: 'Autenticación incorrecta, por favor valide el usuario y contraseña' });
   } else {
       //Si el usuario existe verifica si las contraseñas
-      user.comparePassword(contrasenna, user.contrasenna, function (err, isMatch) {
+      user.comparePassword(password, user.password, function (err, isMatch) {
           if (isMatch && !err) {
             // Si el usuario es correcto y la contraseña coindice se procede a crear el token
             const token = jwt.sign(
-              { correo: correo },
+              { username: username },
               config.SECRETWORDJWT,
               { expiresIn: "2h" }
             );
             // return the information including token as JSON
-            const payload = { rol: user.rol, correo: user.correo };
+            const payload = { role: user.role, username: user.username };
             res.status(202).send({ success: true, token: token, user: payload });
           } else {
               //si la contraseña no coincide se procede a indicar el error

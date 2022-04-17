@@ -12,9 +12,9 @@ const choferController = require("../controller/chofercontroller");
 //ruta para obtener todas las chofers de la base de datos 
 router.get("/", /*auth,permit("user"),*/ choferController.get);
 router.get("/:id",/*auth,*/ choferController.getById);
-router.post("/", /*auth,*/ choferController.create);
-router.delete("/:id",/*auth,*/ choferController.delete);
-router.put("/:id", /*auth,*/ choferController.update);
+router.post("/",/* auth,*/ choferController.create);
+router.delete("/:id",/*auth, */choferController.delete);
+router.put("/:id", /*auth, */choferController.update);
 //
 //
 module.exports = router;

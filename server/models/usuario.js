@@ -1,4 +1,5 @@
 const {Schema, model} = require("mongoose");
+const bcrypt = require('bcrypt-nodejs');
 
 //Se define el esquema de usuario
 const UsuarioSchema = new Schema(
@@ -10,25 +11,25 @@ const UsuarioSchema = new Schema(
        },
        nomUsuario: String,
        apellidos: String,
-       correo: {
+       username: {
         type: String,
         unique: true,
         required: true,
+      },
+      password: {
+        type: String,
+        required: true,
+      },
+      role: {
+        type: String,
+        default: "user",
+        enum: ["user", "admin", "driver"]
       },
        fechaNacimiento: String,
        direccion: String,
        telefono: Number,
        tipoUsuario: String,
        ubicacion: String,
-       rol: {
-        type: String,
-        default: "user",
-        enum: ["user", "admin", "driver"]
-      },
-       contrasenna: {
-        type: String,
-        required: true,
-      },
        estado: //Referencia con estado
       {
         type: Schema.Types.ObjectId,
@@ -73,16 +74,3 @@ const UsuarioModel = model("Usuarios", UsuarioSchema);
 
 //Hacemos visible el modelo con el module exports
 module.exports = UsuarioModel;
-
-
-//
-
-
-//
-
-//
-
-
-//
-
-//
