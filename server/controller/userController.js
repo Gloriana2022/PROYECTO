@@ -4,6 +4,47 @@ const jwt = require('jsonwebtoken');
 //Se obtiene las variables de entorno
 const config = process.env;
 
+//Método para obtener los usuarios
+module.exports.get = async (req, res, next) => {
+    const users = await UserModel.find().populate("estado").exec();
+    res.json(users);
+  };
+  
+  //Método para obtener una facturas por ID
+  module.exports.getById = async (req, res, next) => {
+    const id = req.params.id;
+    const users = await UserModel.findOne({ _id: id }).populate("estado").exec();
+    res.json(users);
+  };
+  
+  //Método para crear los usuarios
+  module.exports.create = (req, res, next) => {
+    const userModel = new UserModel( req.body );
+    userModel.save();
+    res.json(userModel);
+  };
+  
+  //Método para eliminar los usuarios
+  module.exports.delete = async (req, res, next) => {
+    const user = await UserModel.findByIdAndRemove(req.params.id);
+    // si factura es null significa que no existe el registro
+    if (user) {
+      res.json({ result: "El usuario fue borrado correctamente", user });
+    } else {
+      res.json({ result: "ID del usuario no existe en los documentos de la BD", user });
+    }
+  };
+  
+  //Método para modificar las facturas
+  module.exports.update = async (req, res, next) => {
+    const user = await UserModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body,     // ==> {numFactura: numFactura, nomCliente: nomCliente, dirCliente:dirCliente, telCliente:telCliente}
+      { new: true } // retornar el registro que hemos modificado con los nuevos valores
+    );
+    res.json(user);
+  };
+
 // creación de nuevos usuarios
 module.exports.signup = async (req, res, next) => {
     const {numUsuario,nombre, apellidos,username, password, role,fechaNacimiento,direccion,telefono,tipoUsuario,ubicacion,estado} = req.body;
