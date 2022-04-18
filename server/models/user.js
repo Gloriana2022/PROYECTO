@@ -22,7 +22,8 @@ const UserSchema = new Schema({
     type: String,
     default: "user",
     enum: ["user", "admin", "driver"]
-  },fechaNacimiento: String,
+  },
+  fechaNacimiento: String,
   direccion: String,
   telefono: Number,
   tipoUsuario: String,
