@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private fb: FormBuilder, private _snackbar: MatSnackBar, 
               private usuarioService: UsuarioService, private tokenStorage: TokenStorageService) { 
     this.form = this.fb.group({
-      correo: ['', Validators.required],
-      contrasenna: ['', Validators.required]
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   ingresar() {
     const dataInput = {
-      username: this.form.value.usuario,
+      username: this.form.value.username,
       password: this.form.value.password
     };
 

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../models/usuario.model';
 import { environment } from 'src/environments/environment';
 
-const baseUrl = `${environment.apiUrl}/usuario`;
+const baseUrl = `${environment.apiUrl}/user`;
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,10 @@ export class UsuarioService {
 
   create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);
+  }
+
+  createSignup(data: any): Observable<any> {
+    return this.http.post(baseUrl   + '/signup/', data);
   }
 
   update(id: any, data: any): Observable<any> {

@@ -12,4 +12,5 @@ export class Usuario {
     rol?: String;
     contrasenna?: String;
     estado?: any;
+    token?: string;
 }
