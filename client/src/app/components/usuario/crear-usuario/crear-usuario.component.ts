@@ -32,14 +32,14 @@ export class CrearUsuarioComponent implements OnInit {
       numUsuario: ['', Validators.required],
       nomUsuario: ['', Validators.required],
       apellidos: ['', Validators.required],
-      correo: ['', Validators.required],
+      username: ['', Validators.required],
       fechaNacimiento: ['', Validators.required],
       direccion: ['', Validators.required],
       telefono: ['', Validators.required],
       tipoUsuario: ['', Validators.required],
       ubicacion: ['', Validators.required],
-      rol: ['', Validators.required],
-      contrasenna: ['', Validators.required],
+      role: ['', Validators.required],
+      password: ['', Validators.required],
       estado: ['', Validators.required]
     });
   }
@@ -79,14 +79,14 @@ export class CrearUsuarioComponent implements OnInit {
               this.form.setValue({numUsuario: this.usuario.numUsuario, 
                                   nomUsuario: this.usuario.nomUsuario, 
                                   apellidos: this.usuario.apellidos, 
-                                  correo: this.usuario.correo,
+                                  username: this.usuario.username,
                                   fechaNacimiento: this.usuario.fechaNacimiento,
                                   direccion: this.usuario.direccion,
                                   telefono: this.usuario.telefono,
                                   tipoUsuario: this.usuario.tipoUsuario,
                                   ubicacion: this.usuario.ubicacion,
-                                  rol: this.usuario.rol,
-                                  contrasenna: this.usuario.contrasenna,
+                                  role: this.usuario.role,
+                                  password: this.usuario.password,
                                   estado: this.usuario.estado._id});
 
               console.log(this.usuario);
@@ -142,14 +142,14 @@ export class CrearUsuarioComponent implements OnInit {
       numUsuario: this.form.value.numUsuario,
       nomUsuario: this.form.value.nomUsuario,
       apellidos: this.form.value.apellidos,
-      correo: this.form.value.correo,
+      username: this.form.value.username,
       fechaNacimiento: this.form.value.fechaNacimiento,
       direccion: this.form.value.direccion,
       telefono: this.form.value.telefono,
       tipoUsuario: this.form.value.tipoUsuario,
       ubicacion: this.form.value.ubicacion,
-      rol: this.form.value.rol,
-      contrasenna: this.form.value.contrasenna,
+      role: this.form.value.role,
+      password: this.form.value.password,
       estado: this.usuario.estado
     };
 
@@ -183,14 +183,14 @@ export class CrearUsuarioComponent implements OnInit {
       numUsuario: this.form.value.numUsuario,
       nomUsuario: this.form.value.nomUsuario,
       apellidos: this.form.value.apellidos,
-      correo: this.form.value.correo,
+      username: this.form.value.username,
       fechaNacimiento: this.form.value.fechaNacimiento,
       direccion: this.form.value.direccion,
       telefono: this.form.value.telefono,
       tipoUsuario: this.form.value.tipoUsuario,
       ubicacion: this.form.value.ubicacion,
-      rol: this.form.value.rol,
-      contrasenna: this.form.value.contrasenna,
+      role: this.form.value.role,
+      password: this.form.value.password,
       estado: this.form.value.estado
     };
 

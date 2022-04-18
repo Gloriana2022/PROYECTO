@@ -3,14 +3,14 @@ export class Usuario {
     numUsuario?:Number;
     nomUsuario?: String;
     apellidos?: String;
-    correo?: String;
+    username?: String;
     fechaNacimiento?: String;
     direccion?: String;
     telefono?: Number;
     tipoUsuario?: String;
     ubicacion?: String;
-    rol?: String;
-    contrasenna?: String;
+    role?: String;
+    password?: String;
     estado?: any;
     token?: string;
 }
