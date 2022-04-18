@@ -47,11 +47,11 @@ module.exports.get = async (req, res, next) => {
 
 // creación de nuevos usuarios
 module.exports.signup = async (req, res, next) => {
-    const {numUsuario,nombre, apellidos,username, password, role,fechaNacimiento,direccion,telefono,tipoUsuario,ubicacion,estado} = req.body;
+    const {numUsuario,nomUsuario, apellidos,username, password, role,fechaNacimiento,direccion,telefono,tipoUsuario,ubicacion,estado} = req.body;
     if (!username || !password) {
         res.json({ success: false, msg: 'Por favor envié los datos de usuario y contraseña!' });
     } else {
-        var newUser = new UserModel({ numUsuario:numUsuario,nombre:nombre,apellidos:apellidos, username: username, password: password, role:role,fechaNacimiento:fechaNacimiento,direccion:direccion,telefono:telefono,tipoUsuario:tipoUsuario,ubicacion: ubicacion,estado:estado });
+        var newUser = new UserModel({ numUsuario:numUsuario,nomUsuario:nomUsuario,apellidos:apellidos, username: username, password: password, role:role,fechaNacimiento:fechaNacimiento,direccion:direccion,telefono:telefono,tipoUsuario:tipoUsuario,ubicacion: ubicacion,estado:estado });
         // save the user
         newUser.save(function (err) {
             if (err) {
