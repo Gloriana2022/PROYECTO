@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const usuarioModel = require("../models/usuario");
+const usuarioModel = require("../models/user");
 //Se obtiene las variables de entorno
 //Se verifica que el token sea valido
 const auth = async (req, res, next) => {

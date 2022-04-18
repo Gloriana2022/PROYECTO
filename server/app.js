@@ -11,9 +11,10 @@ const app = express();
 //inclusion de las Rutas creadas en el backend
 const choferRoutes = require("./routes/choferRoutes");
 const solicitudVehiculoRoutes = require("./routes/solicitudVehiculoRoutes");
-const usuarioRoutes = require("./routes/usuarioRoutes");
+//const usuarioRoutes = require("./routes/usuarioRoutes");
 const vehiculoRoutes = require("./routes/vehiculoRoutes");
 const estadoRouter = require("./routes/estadoRoute");
+const userRouter = require("./routes/userRoutes");
 //Variable de entorno
 dotEnv.config();
 
@@ -48,9 +49,10 @@ app.use(
 //Se define la ruta facura
 app.use("/chofer/", choferRoutes);
 app.use("/solicitudVehiculo/", solicitudVehiculoRoutes);
-app.use("/usuario/", usuarioRoutes);
+//app.use("/usuario/", usuarioRoutes);
 app.use("/vehiculo/", vehiculoRoutes);
 app.use("/estados/", estadoRouter);
+app.use("/user/", userRouter);
 
 //Se inicia el servicio express para publicar los servicios rest
 app.listen(port,()=>{
