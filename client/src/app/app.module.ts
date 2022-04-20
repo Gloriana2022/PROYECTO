@@ -18,7 +18,8 @@ import { CrearSolicitudVehiculoComponent } from './components/solicitar-vehiculo
 import { CrearFacturasComponent } from './components/facturas/crear-facturas/crear-facturas.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 
 @NgModule({
@@ -39,9 +40,11 @@ import { AuthGuard } from './shared/guards/auth.guard';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
