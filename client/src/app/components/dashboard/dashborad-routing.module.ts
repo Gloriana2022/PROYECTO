@@ -19,6 +19,7 @@ import { ReportesComponent } from '../reportes/reportes.component';
 
 import { ContactenosComponent } from '../contactenos/contactenos.component';
 import { LoginComponent } from '../login/login.component';
+import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 
 
 
@@ -45,7 +46,17 @@ const routes: Routes = [
     { path: 'contactenos', component: ContactenosComponent },
 
 
-    { path: 'reportes', component: ReportesComponent }
+    { path: 'reportes', component: ReportesComponent },
+
+    {
+      path: 'dashboard', canActivate:[AuthGuard],
+      children:[
+        { path: 'crearChofer', component: CrearChoferComponent },
+        { path: 'crearChofer/:id', component: CrearChoferComponent }
+      ]
+    }
+
+    
   ]
 }  
 
@@ -56,3 +67,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class DashboradRoutingModule { }
+
+
+

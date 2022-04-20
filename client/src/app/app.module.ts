@@ -16,6 +16,7 @@ import { CrearChoferComponent } from './components/chofer/crear-chofer/crear-cho
 import { CrearVehiculoComponent } from './components/vehiculo/crear-vehiculo/crear-vehiculo.component';
 import { CrearSolicitudVehiculoComponent } from './components/solicitar-vehiculo/crear-solicitud-vehiculo/crear-solicitud-vehiculo.component';
 import { CrearFacturasComponent } from './components/facturas/crear-facturas/crear-facturas.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 
@@ -40,7 +41,7 @@ import { CrearFacturasComponent } from './components/facturas/crear-facturas/cre
     AppRoutingModule,
     SharedModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
