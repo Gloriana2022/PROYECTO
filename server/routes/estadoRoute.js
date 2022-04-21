@@ -14,7 +14,7 @@ const estadoController = require("../controller/estadoController");
 //Definición de rutas para cada uno de los verbos para las facturas
 
 
-router.get("/", auth, /*permit("admin","driver"),*/ estadoController.get);
+router.get("/", auth, permit("admin","driver"),estadoController.get);
 
 router.get("/:id", auth, estadoController.getById);
 

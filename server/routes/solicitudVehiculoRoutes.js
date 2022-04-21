@@ -9,7 +9,7 @@ const {permit}  = require("../middleware/authorization");
 const solicitudVehiculoController = require("../controller/solicitudVehiculo");
 //Definicion de las rutas de solicitudVehiculo
 //ruta para obtener todas las solicitudVehiculos de la base de datos 
-router.get("/",auth,permit("admin", "user"), solicitudVehiculoController.get);
+router.get("/",auth,permit("admin", "driver"), solicitudVehiculoController.get);
 router.get("/:id",auth, solicitudVehiculoController.getById);
 router.post("/",auth, solicitudVehiculoController.create);
 router.delete("/:id",auth, solicitudVehiculoController.delete);
