@@ -48,13 +48,13 @@ const routes: Routes = [
 
     { path: 'reportes', component: ReportesComponent },
 
-    {
+    /*{
       path: 'dashboard', canActivate:[AuthGuard],
       children:[
         { path: 'crearChofer', component: CrearChoferComponent },
         { path: 'crearChofer/:id', component: CrearChoferComponent }
       ]
-    }
+    }*/
 
     
   ]

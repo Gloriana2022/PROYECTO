@@ -47,9 +47,12 @@ export class LoginComponent implements OnInit {
 
           //Se valida si es un acceso u otro
           if (data.user.role === 'user') {
-            this.router.navigateByUrl('/perfil');
+            this.router.navigateByUrl('/dashboard');
           }
           if (data.user.role === 'admin') {
+            this.router.navigateByUrl('/dashboard');
+          }
+          if (data.user.role === 'driver') {
             this.router.navigateByUrl('/dashboard');
           }
           this.loading = false;
