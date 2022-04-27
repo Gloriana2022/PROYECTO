@@ -13,7 +13,7 @@ import { CrearChoferComponent } from '../chofer/crear-chofer/crear-chofer.compon
 
 import { CrearSolicitudVehiculoComponent } from '../solicitar-vehiculo/crear-solicitud-vehiculo/crear-solicitud-vehiculo.component';
 
-
+import { MapsComponent } from '../maps/maps.component';
 import { ReportesComponent } from '../reportes/reportes.component';
 
 
@@ -42,6 +42,7 @@ const routes: Routes = [
     { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent },
     { path: 'CrearsolicitarVehiculo', component: CrearSolicitudVehiculoComponent },
     { path: 'CrearsolicitarVehiculo/:id', component: CrearSolicitudVehiculoComponent },
+    { path: 'maps', component: MapsComponent},
 
     { path: 'login', component: LoginComponent },
     { path: 'contactenos', component: ContactenosComponent },

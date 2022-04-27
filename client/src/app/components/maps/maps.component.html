@@ -1,0 +1,59 @@
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    
+<div class="container">
+    <mat-toolbar>
+      <span>Maps</span>
+    </mat-toolbar>
+</div>
+<div class="contenido">
+  
+  <mat-form-field appearance="standard">
+      <mat-label>Filtro</mat-label>
+  </mat-form-field>
+
+</head>
+  <body>
+<input type="text" id="place_input" placeholder="Ingresa una ubicación..."/>
+<div id="map"></div>
+<script
+async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaHGwUhOdRfImNHEMraZWSmYtc98YFBMc&libraries=places&callback=initMap"
+></script>
+<script>
+const argCoords= { lat:9.748917, lng: -83.753428 };
+const mapDiv = document.getElementById("map");
+const input=document.getElementById("place_input");
+let map;
+let marker;
+let autocomplete;
+function initMap(){
+    map=new google.maps.Map(mapDiv, {
+        center: argCoords,
+        zoom:8,
+    });
+    marker= new goole.maps.Marker({
+      position:argCoords,
+      map:map,
+    });
+    initAutocomplete();
+}
+
+function initAutocomplete(){
+  autocomplete= new google.maps.places.Autocomplete(input);
+  autocomplete.addListener('place_changed', function(){
+    const place=autocomplete.getPlace();
+    map.setCenter(place.geometry.location);
+    marker.setPosition(place.geometry.location);
+  });
+}
+</script>
+</body>
+
+</html>
+-->
+<div class="full" id="map"></div>
