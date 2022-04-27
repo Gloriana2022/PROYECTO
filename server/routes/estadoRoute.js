@@ -14,14 +14,14 @@ const estadoController = require("../controller/estadoController");
 //Definición de rutas para cada uno de los verbos para las facturas
 
 
-router.get("/", auth, permit("admin","driver"),estadoController.get);
+router.get("/", auth, permit("admin"),estadoController.get);
 
-router.get("/:id", auth, estadoController.getById);
+router.get("/:id", auth,permit("admin"), estadoController.getById);
 
-router.post("/", auth, estadoController.create);
+router.post("/", auth,permit("admin"), estadoController.create);
 
-router.delete("/:id", auth, estadoController.delete);
+router.delete("/:id", auth,permit("admin"), estadoController.delete);
 
-router.put("/:id", auth, estadoController.update);
+router.put("/:id", auth,permit("admin"), estadoController.update);
 
 module.exports = router;

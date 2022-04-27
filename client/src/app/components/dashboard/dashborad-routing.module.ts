@@ -25,7 +25,8 @@ import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 
 const routes: Routes = [
   { 
-    path: '', component: DashboardComponent, children: [
+    path: '', component: DashboardComponent, 
+    children: [
     { path: 'inicio', component: InicioComponent },
     { path: 'usuario', component: UsuarioComponent },
     { path: 'crearUsuario', component: CrearUsuarioComponent },

@@ -47,13 +47,13 @@ export class LoginComponent implements OnInit {
 
           //Se valida si es un acceso u otro
           if (data.user.role === 'user') {
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigateByUrl('/dashboard/usuario');
           }
           if (data.user.role === 'admin') {
             this.router.navigateByUrl('/dashboard');
           }
           if (data.user.role === 'driver') {
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigateByUrl('/dashboard/chofer');
           }
           this.loading = false;
           this.showMsg('Bienvenido al sistema!');

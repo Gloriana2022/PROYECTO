@@ -64,7 +64,7 @@ consultarSolicitudVehiculo():void{
 eliminarSolicitudVehiculo(element:any){
 
   Swal.fire({
-    title: `¿Desea eliminar la solicitud #${element._id}?`,
+    title: `¿Desea eliminar la solicitud #${element.identificador}?`,
     icon: 'question',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
@@ -100,7 +100,7 @@ eliminarSolicitudVehiculo(element:any){
 modificarSolicitudVehiculo(element:any){
 
   Swal.fire({
-    title: `¿Desea modificar la solicitud #${element._id}?`,
+    title: `¿Desea modificar la solicitud #${element.identificador}?`,
     icon: 'question',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, ActivationStart, Params, Router } from '@angular/router';
 import { Chofer } from 'src/app/models/chofer.model';
 import { SolicitudVehiculo } from 'src/app/models/solicitud-vehiculo.model';
 import { Usuario } from 'src/app/models/usuario.model';
@@ -11,13 +11,22 @@ import { SolicitudVehiculoService } from 'src/app/service/solicitud-vehiculo.ser
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { VehiculoService } from 'src/app/service/vehiculo.service';
 
+declare var paypal: any;
 @Component({
   selector: 'app-crear-solicitud-vehiculo',
   templateUrl: './crear-solicitud-vehiculo.component.html',
   styleUrls: ['./crear-solicitud-vehiculo.component.css']
 })
-export class CrearSolicitudVehiculoComponent implements OnInit {
 
+
+export class CrearSolicitudVehiculoComponent implements OnInit {
+ 
+  @ViewChild('paypal', {static: true}) paypalElement! : ElementRef;
+
+  producto = {
+    descripcion : 'Producto de venta',
+    precio : 599.99,
+  }
   id: number = 0;
   textPantalla: string = 'Crear Solicitud';
   isInsertar: boolean = true;
@@ -51,7 +60,7 @@ export class CrearSolicitudVehiculoComponent implements OnInit {
   }
 
   
-
+  
   ngOnInit(): void {
     //***************************************************************/
     //Se carga la información de los estados
@@ -60,6 +69,19 @@ export class CrearSolicitudVehiculoComponent implements OnInit {
     this.cargarSolicitud();
     this.cargarChofer();
     this.cargarVehiculo();
+
+    paypal
+    .Buttons(/*{
+      CreateOrder:(data,actions) =>{
+        return actions.order.create({
+          purchase
+        })
+      }
+    }*/)
+    .render(this.paypalElement.nativeElement);
+
+
+    
    
 
     //***************************************************************/

@@ -18,7 +18,7 @@ const SolicitudSchema = new Schema(
        usuario: //Referencia con estado
       {
         type: Schema.Types.ObjectId,
-        ref: "Usuarios",
+        ref: "User",
         required: true
       },
       vehiculo: //Referencia con estado

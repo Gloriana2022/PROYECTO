@@ -9,7 +9,7 @@
     <mat-card style="margin-top: 10px;" style="text-align: left;">
         <form [formGroup]="form">
             <mat-form-field >
-                <mat-label>Cedula Identidad</mat-label>
+                <mat-label>N° Solicitud</mat-label>
                 <input matInput #input maxlength="10" placeholder="9999" autocomplete="off" formControlName="identificador">
             </mat-form-field>
             <br>
@@ -83,7 +83,7 @@
              </mat-form-field>
                
             <br>
-            
+           
             <br><br>
             <button mat-raised-button color="warn" routerLink="/dashboard/solicitarVehiculo" routerLinkActive="router-link-active" >Regresar</button>
             <span *ngIf="isInsertar">
@@ -92,7 +92,10 @@
             <span *ngIf="!isInsertar">
                 <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="modificarSolicitud()">Modificar Usuario</button>
             </span>
-            
+            <br>
+            <br>
+            <div #paypal> </div>
+           
         </form>
     </mat-card>
 </div>
