@@ -83,8 +83,10 @@
              </mat-form-field>
                
             <br>
-           
-            <br><br>
+            <div class="botton" #paypal> </div>
+            <br>
+            <br>
+            <br><br><br>
             <button mat-raised-button color="warn" routerLink="/dashboard/solicitarVehiculo" routerLinkActive="router-link-active" >Regresar</button>
             <span *ngIf="isInsertar">
                 <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="saveSolicitud()">Guardar Usuario</button>
@@ -93,9 +95,11 @@
                 <button style="margin-left: 20px;" mat-raised-button color="primary" type="submit" [disabled] = "form.invalid" (click)="modificarSolicitud()">Modificar Usuario</button>
             </span>
             <br>
-            <br>
-            <div #paypal> </div>
+            
+            <div class="botton" #paypal> </div>
            
         </form>
+
+        
     </mat-card>
 </div>

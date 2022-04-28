@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { styles } from './mapstyles';
-
+declare var map: any;
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
@@ -11,7 +11,11 @@ import { styles } from './mapstyles';
 export class MapsComponent implements OnInit {
    //Para la paginación
    title = 'google-maps';
-   constructor(private map:google.maps.Map) { }
+  
+   private map:google.maps.Map | undefined
+   //constructor(private map:google.maps.Map) { }
+ 
+   //constructor(private map:google.maps.Map) { }
 
   ngOnInit(): void {
     let loader=new Loader({

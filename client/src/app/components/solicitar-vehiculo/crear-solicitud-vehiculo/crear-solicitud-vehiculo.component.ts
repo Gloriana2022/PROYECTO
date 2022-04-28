@@ -12,6 +12,9 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { VehiculoService } from 'src/app/service/vehiculo.service';
 
 declare var paypal: any;
+
+declare var data: any;
+declare var actions: any;
 @Component({
   selector: 'app-crear-solicitud-vehiculo',
   templateUrl: './crear-solicitud-vehiculo.component.html',
@@ -38,6 +41,7 @@ export class CrearSolicitudVehiculoComponent implements OnInit {
   listaVehiculo : Vehiculo[] = [];
   listaChofer : Chofer[] = [];
 
+
   constructor(private solicitarVehiculoService: SolicitudVehiculoService, private usuarioService: UsuarioService,
     private vehiculoService: VehiculoService, private choferService: ChoferService,
     private fb: FormBuilder, private router: Router, 
@@ -62,6 +66,8 @@ export class CrearSolicitudVehiculoComponent implements OnInit {
   
   
   ngOnInit(): void {
+
+    
     //***************************************************************/
     //Se carga la información de los estados
     //***************************************************************/
@@ -71,13 +77,7 @@ export class CrearSolicitudVehiculoComponent implements OnInit {
     this.cargarVehiculo();
 
     paypal
-    .Buttons(/*{
-      CreateOrder:(data,actions) =>{
-        return actions.order.create({
-          purchase
-        })
-      }
-    }*/)
+    .Buttons()
     .render(this.paypalElement.nativeElement);
 
 
