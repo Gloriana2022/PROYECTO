@@ -27,28 +27,28 @@ const routes: Routes = [
   { 
     path: '', component: DashboardComponent, 
     children: [
-    { path: 'inicio', component: InicioComponent },
-    { path: 'usuario', component: UsuarioComponent },
-    { path: 'crearUsuario', component: CrearUsuarioComponent },
-    { path: 'crearUsuario/:id', component: CrearUsuarioComponent },
-    { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent },
-    { path: 'vehiculo', component: VehiculoComponent },
-    { path: 'crearVehiculo', component: CrearVehiculoComponent },
-    { path: 'crearVehiculo/:id', component: CrearVehiculoComponent },
-    { path: 'chofer', component: ChoferComponent },
-    { path: 'crearChofer', component: CrearChoferComponent },
-    { path: 'crearChofer/:id', component: CrearChoferComponent },
+    { path: 'inicio', component: InicioComponent, canActivate:[AuthGuard] },
+    { path: 'usuario', component: UsuarioComponent, canActivate:[AuthGuard] },
+    { path: 'crearUsuario', component: CrearUsuarioComponent, canActivate:[AuthGuard] },
+    { path: 'crearUsuario/:id', component: CrearUsuarioComponent, canActivate:[AuthGuard] },
+    { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent, canActivate:[AuthGuard]},
+    { path: 'vehiculo', component: VehiculoComponent, canActivate:[AuthGuard] },
+    { path: 'crearVehiculo', component: CrearVehiculoComponent, canActivate:[AuthGuard] },
+    { path: 'crearVehiculo/:id', component: CrearVehiculoComponent, canActivate:[AuthGuard] },
+    { path: 'chofer', component: ChoferComponent, canActivate:[AuthGuard] },
+    { path: 'crearChofer', component: CrearChoferComponent, canActivate:[AuthGuard] },
+    { path: 'crearChofer/:id', component: CrearChoferComponent, canActivate:[AuthGuard] },
 
-    { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent },
-    { path: 'CrearsolicitarVehiculo', component: CrearSolicitudVehiculoComponent },
-    { path: 'CrearsolicitarVehiculo/:id', component: CrearSolicitudVehiculoComponent },
-    { path: 'mapa', component: MapsComponent},
+    { path: 'solicitarVehiculo', component: SolicitarVehiculoComponent, canActivate:[AuthGuard] },
+    { path: 'CrearsolicitarVehiculo', component: CrearSolicitudVehiculoComponent, canActivate:[AuthGuard] },
+    { path: 'CrearsolicitarVehiculo/:id', component: CrearSolicitudVehiculoComponent, canActivate:[AuthGuard] },
+    { path: 'mapa', component: MapsComponent, canActivate:[AuthGuard]},
 
     { path: 'login', component: LoginComponent },
-    { path: 'contactenos', component: ContactenosComponent },
+    { path: 'contactenos', component: ContactenosComponent, canActivate:[AuthGuard] },
 
 
-    { path: 'reportes', component: ReportesComponent },
+    { path: 'reportes', component: ReportesComponent, canActivate:[AuthGuard] },
 
     /*{
       path: 'dashboard', canActivate:[AuthGuard],

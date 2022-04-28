@@ -40,6 +40,11 @@ export class UsuarioService {
   singin(data: any): Observable<any> {
     return this.http.post(baseUrl  + '/signin/', data);
   }
+  
+
+  getRole(role: any): Observable<Usuario> {
+    return this.http.get(`${baseUrl}/${role}`);
+  }
 
 
 }

@@ -17,7 +17,7 @@ import { styles } from './mapstyles';
 
 declare var paypal: any;
 
-declare var data: any;
+//declare var data: any;
 declare var actions: any;
 @Component({
   selector: 'app-crear-solicitud-vehiculo',
@@ -27,11 +27,11 @@ declare var actions: any;
 
 
 export class CrearSolicitudVehiculoComponent implements OnInit {
- 
+  
   @ViewChild('paypal', {static: true}) paypalElement! : ElementRef;
 
   private map:google.maps.Map | undefined
-
+  
   producto = {
     descripcion : 'Producto de venta',
     precio : 599.99,
