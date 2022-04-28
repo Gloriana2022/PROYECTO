@@ -11,6 +11,10 @@ import { SolicitudVehiculoService } from 'src/app/service/solicitud-vehiculo.ser
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { VehiculoService } from 'src/app/service/vehiculo.service';
 
+
+import { Loader } from '@googlemaps/js-api-loader';
+import { styles } from './mapstyles';
+
 declare var paypal: any;
 
 declare var data: any;
@@ -25,6 +29,8 @@ declare var actions: any;
 export class CrearSolicitudVehiculoComponent implements OnInit {
  
   @ViewChild('paypal', {static: true}) paypalElement! : ElementRef;
+
+  private map:google.maps.Map | undefined
 
   producto = {
     descripcion : 'Producto de venta',
@@ -79,6 +85,31 @@ export class CrearSolicitudVehiculoComponent implements OnInit {
     paypal
     .Buttons()
     .render(this.paypalElement.nativeElement);
+
+
+
+
+    let loader=new Loader({
+      apiKey:'AIzaSyAaHGwUhOdRfImNHEMraZWSmYtc98YFBMc'
+    })
+
+    loader.load().then(()=>{
+
+      console.log('loaded gmaps')
+      const location = { lat:9.748917, lng: -83.753428}
+
+        this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+        center: location, 
+        zoom:8,
+        styles: styles
+      })
+      
+      const marker = new google.maps.Marker({
+        position: location,
+        map: this.map,
+      });
+
+    })
 
 
     

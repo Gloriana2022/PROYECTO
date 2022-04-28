@@ -20,7 +20,6 @@ export class CrearUsuarioComponent implements OnInit {
   form:FormGroup;
   usuario = new Usuario;
 
-  listaUsuario : Usuario[] = [];
   listaEstados : Estado[] = [];
 
   constructor(private usuarioService: UsuarioService,private estadoService: EstadoService,
@@ -51,7 +50,6 @@ export class CrearUsuarioComponent implements OnInit {
     //Se carga la información de los estados
     //***************************************************************/
 
-    this.cargarUsuario();
     this.cargarEstados();
 
     //***************************************************************/
@@ -111,17 +109,6 @@ export class CrearUsuarioComponent implements OnInit {
   //***************************************************************/
   //Se carga la información de los estados para el select
   //***************************************************************/
-  cargarUsuario(): void{
-    this.usuarioService.getAll()
-      .subscribe({
-        next: (res: any) => {
-          console.log(res);
-          this.listaUsuario = res;
-        },
-        error: (e:any) => console.error(e)
-      });
-  }
-
   cargarEstados(): void{
     this.estadoService.getAll()
       .subscribe({
@@ -150,7 +137,7 @@ export class CrearUsuarioComponent implements OnInit {
       ubicacion: this.form.value.ubicacion,
       role: this.form.value.role,
       password: this.form.value.password,
-      estado: this.usuario.estado
+      estado: this.form.value.estado
     };
 
     console.log(data);
