@@ -17,8 +17,6 @@ import { styles } from './mapstyles';
 
 declare var paypal: any;
 
-//declare var data: any;
-declare var actions: any;
 @Component({
   selector: 'app-crear-solicitud-vehiculo',
   templateUrl: './crear-solicitud-vehiculo.component.html',
@@ -85,6 +83,10 @@ export class CrearSolicitudVehiculoComponent implements OnInit {
     paypal
     .Buttons()
     .render(this.paypalElement.nativeElement);
+
+    
+    
+    
 
 
 
