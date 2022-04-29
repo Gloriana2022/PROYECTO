@@ -27,7 +27,7 @@ const routes: Routes = [
   { 
     path: '', component: DashboardComponent, 
     children: [
-    { path: 'inicio', component: InicioComponent, canActivate:[AuthGuard] },
+    { path: 'inicio', component: InicioComponent },
     { path: 'usuario', component: UsuarioComponent, canActivate:[AuthGuard] },
     { path: 'crearUsuario', component: CrearUsuarioComponent, canActivate:[AuthGuard] },
     { path: 'crearUsuario/:id', component: CrearUsuarioComponent, canActivate:[AuthGuard] },
@@ -45,7 +45,7 @@ const routes: Routes = [
     { path: 'mapa', component: MapsComponent, canActivate:[AuthGuard]},
 
     { path: 'login', component: LoginComponent },
-    { path: 'contactenos', component: ContactenosComponent, canActivate:[AuthGuard] },
+    { path: 'contactenos', component: ContactenosComponent },
 
 
     { path: 'reportes', component: ReportesComponent, canActivate:[AuthGuard] },

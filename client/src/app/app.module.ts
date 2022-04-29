@@ -4,8 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { LoginComponent } from './components/login/login.component';
-import { ContactenosComponent } from './components/contactenos/contactenos.component';
+//import { LoginComponent } from './components/login/login.component';
+//import { ContactenosComponent } from './components/contactenos/contactenos.component';
 import { RegistreseComponent } from './components/registrese/registrese.component';
 
 import { SharedModule } from './components/shared/shared.module';
@@ -26,8 +26,8 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ContactenosComponent,
+    //LoginComponent,
+    //ContactenosComponent,
     RegistreseComponent,
     PerfilComponent,
     FacturasComponent,
@@ -35,7 +35,7 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     CrearChoferComponent,
     CrearVehiculoComponent,
     CrearSolicitudVehiculoComponent,
-    CrearFacturasComponent,
+    CrearFacturasComponent
   ],
   imports: [
     BrowserModule,

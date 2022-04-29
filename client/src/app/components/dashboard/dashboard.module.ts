@@ -5,7 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboradRoutingModule } from './dashborad-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-import { InicioComponent } from '../inicio/inicio.component';
+//mport { InicioComponent } from '../inicio/inicio.component';
 import { NavbarComponent } from "../navbar/NavbarComponent";
 import { ReportesComponent } from '../reportes/reportes.component';
 
@@ -20,7 +20,7 @@ import { MapsComponent } from '../maps/maps.component';
 @NgModule({
   declarations: [
     DashboardComponent,
-    InicioComponent,
+    //InicioComponent,
     NavbarComponent,
     ReportesComponent,
     VehiculoComponent,
