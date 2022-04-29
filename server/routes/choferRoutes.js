@@ -10,11 +10,11 @@ const {permit}  = require("../middleware/authorization");
 const choferController = require("../controller/chofercontroller");
 //Definicion de las rutas de chofer
 //ruta para obtener todas las chofers de la base de datos 
-router.get("/", auth,permit("admin"), choferController.get);
-router.get("/:id",auth,permit("admin"),choferController.getById);
-router.post("/", auth, permit("admin"), choferController.create);
-router.delete("/:id", permit("admin"),choferController.delete);
-router.put("/:id", auth,permit("admin"), choferController.update);
+router.get("/", auth,permit("admin","driver"), choferController.get);
+router.get("/:id",auth,permit("admin","driver"),choferController.getById);
+router.post("/", auth, permit("admin","driver"), choferController.create);
+router.delete("/:id", permit("admin","driver"),choferController.delete);
+router.put("/:id", auth,permit("admin","driver"), choferController.update);
 //
 //
 module.exports = router;
